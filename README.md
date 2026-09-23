@@ -79,10 +79,15 @@ Cây thư mục phản ánh các tệp tin hiện hữu trong repository:
 │   └── raw/
 │       └── .gitkeep
 ├── evidence/
+│   ├── stage-a2/
+│   │   └── preexecution/
+│   │       └── STAGE-A2-LOCAL-EXECUTION-ENVIRONMENT-V1.5.json # Khóa môi trường thực thi gốc
 │   ├── 03_training_epochs_loss.png      # Ảnh chụp console đợt huấn luyện xác nhận
 │   ├── MANUAL_RUN_SUMMARY.txt           # Tóm tắt số liệu đợt chạy xác nhận
 │   └── V3-PROBE-RESULT.json             # Kết quả đánh giá hạ nguồn V3
 ├── experiments/
+│   ├── plans/
+│   │   └── STAGE-A2-FINAL-12-EPOCH-AUTHORITY.json # Kế hoạch thực nghiệm 12-epoch chính thức
 │   ├── nineplus/
 │   │   ├── confirmatory/                # Manifest cấu hình các đợt chạy xác nhận
 │   │   ├── evaluation_v3/               # Kết quả đánh giá hạ nguồn V3 (JSON)

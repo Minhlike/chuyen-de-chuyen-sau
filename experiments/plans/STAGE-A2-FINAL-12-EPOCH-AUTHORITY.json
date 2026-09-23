@@ -1,0 +1,81 @@
+{
+  "authority_id": "STAGE-A2-FINAL-12-EPOCH-AUTHORITY",
+  "version": "1.0.0",
+  "status": "OFFICIAL_ACTIVE_AUTHORITY",
+  "created_at_utc": "2026-09-10T08:15:00Z",
+  "effective_scope": "STAGE_A2_EMPIRICAL_PRETRAINING",
+  "execution_provider": "LOCAL_WINDOWS_GPU",
+  "training_hyperparameters": {
+    "architecture": "TemporalGraphViewEncoder",
+    "d_node": 128,
+    "d_edge": 64,
+    "d_msg": 128,
+    "n_heads": 4,
+    "d_time_proj": 32,
+    "d_rel_emb": 32,
+    "d_type_emb": 32,
+    "dropout": 0.1,
+    "num_canonical_relations": 8,
+    "num_node_types": 4,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.98,
+    "adam_eps": 1e-08,
+    "scheduler": "LinearWarmupCosineDecay",
+    "warmup_ratio": 0.05,
+    "warmup_steps": 343,
+    "min_lr": 1e-05,
+    "temporal_window_size": 256,
+    "gradient_accumulation_steps": 4,
+    "nominal_effective_batch_size_events": 1024,
+    "clip_norm": 1.0,
+    "max_epochs": 12,
+    "steps_per_epoch": 573,
+    "max_optimizer_steps": 6876,
+    "early_stopping_patience": 3,
+    "checkpoint_selection": "MINIMUM_GLOBAL_VALIDATION_L_GRAPH",
+    "loss_formula": "L_graph = 1.0 * L_rel + 1.0 * L_node + 0.1 * L_time"
+  },
+  "environment_lock": {
+    "environment_lock_path": "experiments/evidence/stage-a2/preexecution/STAGE-A2-LOCAL-EXECUTION-ENVIRONMENT-V1.5.json",
+    "environment_lock_sha256": "81d3ca4865a95c75cc2345695091265f948ad58e705865a3f8f780a9bf09f362",
+    "execution_provider": "LOCAL_WINDOWS_GPU",
+    "python_version": "3.12.8",
+    "pytorch_version": "2.6.0+cu124",
+    "cuda_runtime": "12.4",
+    "device_name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+    "device_compute_capability": "8.6",
+    "nvidia_driver_version": "595.95",
+    "cublas_workspace_config": ":4096:8",
+    "deterministic_algorithms_enabled": true
+  },
+  "dataset_membership": {
+    "dataset": "HDFS",
+    "raw_dataset_sha256": "6ca6c5bc2671c66afecee9369a2fdac606bf33997a2494ac66aa411fe3e95169",
+    "split_protocol": "Strict Causal Temporal Split (Arp et al. [2])",
+    "train": {
+      "sessions_count": 35000,
+      "events_count": 586577,
+      "windows_count_w256": 2292,
+      "membership_sha256": "65b76694b0a3cf5c6d684a26899b1e5dca634cfd0985560149feddc12ca8ccfc"
+    },
+    "validation": {
+      "sessions_count": 7500,
+      "events_count": 119531,
+      "windows_count_w256": 467,
+      "membership_sha256": "14cf689f9682a354e104463b9f02806629a683dfdf36d72d88daf5b407b0609a"
+    },
+    "test_firewall": {
+      "status": "SEALED_CRYPTO_FIREWALL",
+      "test_opened": false,
+      "test_reads": 0,
+      "firewall_sha256": "e07999decc7164e639a71fbfb3a0b9670273d01fdc8cdb087ebdc50c2c84af78"
+    }
+  },
+  "historical_provenance": {
+    "historical_plan_path": "experiments/plans/STAGE-A2-FIVE-SEED-EXECUTION-PLAN-V1.5.json",
+    "note": "Historical plan preserved unmodified to ensure bitwise integrity of pre-execution authorization hashes. Active operational authority is defined by this document."
+  }
+}
