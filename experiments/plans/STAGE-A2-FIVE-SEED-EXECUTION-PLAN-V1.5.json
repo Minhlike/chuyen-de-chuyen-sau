@@ -1,0 +1,180 @@
+{
+  "plan_id": "PLAN-STAGE-A2-FIVE-SEED-EXECUTION-V1.5",
+  "protocol_version": "1.5.0",
+  "execution_provider": "GOOGLE_COLAB",
+  "runtime_type": "HOSTED_GPU",
+  "environment_assignment": {
+    "hardware_assignment_policy": "DYNAMIC_DISCOVER_THEN_LOCK",
+    "strict_environment_fields": [
+      "python_major_minor",
+      "pytorch_version",
+      "torch_cuda_runtime",
+      "device_type",
+      "device_name",
+      "device_compute_capability",
+      "nvidia_driver_version",
+      "cublas_workspace_config",
+      "deterministic_algorithms_enabled",
+      "cudnn_deterministic",
+      "cudnn_benchmark",
+      "automatic_cpu_fallback"
+    ],
+    "descriptive_environment_fields": [
+      "gpu_uuid_descriptive",
+      "hostname",
+      "session_id",
+      "pci_bus_id",
+      "platform",
+      "kernel",
+      "total_vram_bytes"
+    ]
+  },
+  "durability": "GOOGLE_DRIVE_EPOCH_BOUNDARY",
+  "incomplete_epoch_policy": "REPLAY_FROM_LAST_DURABLE_COMPLETED_EPOCH",
+  "effective_protocol_amendment": "Amendment 12 (Stage A2 V1.5)",
+  "seed42_authorization_status": "PENDING_COLAB_ENVIRONMENT_QUALIFICATION",
+  "workspace_layout": {
+    "ephemeral_workspace": "/content/Research",
+    "ephemeral_fast_data": "/content/stage-a2-data/HDFS_1.tar.gz",
+    "durable_storage_root": "/content/drive/MyDrive/Chuyende-stage-a2",
+    "durable_runs_dir": "/content/drive/MyDrive/Chuyende-stage-a2/runs",
+    "durable_checkpoints_dir": "/content/drive/MyDrive/Chuyende-stage-a2/checkpoints"
+  },
+  "dataset": "HDFS",
+  "split_id": "SPL-HDFS-001",
+  "dataset_eligibility": {
+    "HDFS": "ELIGIBLE",
+    "BGL": "INELIGIBLE_SINGLE_NODE"
+  },
+  "execution_device": "cuda",
+  "device_requirements": {
+    "target_framework": "PyTorch 2.6.0+cu124",
+    "device_type": "cuda",
+    "automatic_cpu_fallback": "FORBIDDEN",
+    "cublas_workspace_config": ":4096:8",
+    "deterministic_algorithms": true
+  },
+  "execution_membership": {
+    "authorized_train_sessions": 35000,
+    "authorized_train_graph_events": 586577,
+    "selected_train_membership_sha256": "65b76694b0a3cf5c6d684a26899b1e5dca634cfd0985560149feddc12ca8ccfc",
+    "authorized_val_sessions": 7500,
+    "authorized_val_graph_events": 119531,
+    "selected_val_membership_sha256": "14cf689f9682a354e104463b9f02806629a683dfdf36d72d88daf5b407b0609a"
+  },
+  "canonical_seeds": [
+    42,
+    1337,
+    2024,
+    7,
+    999
+  ],
+  "execution_sequence": [
+    {
+      "order": 1,
+      "seed": 42,
+      "run_id": "RUN-STAGE-A2-HDFS-SEED42",
+      "relative_output_dir": "experiments/runs/stage-a2/HDFS/seed-42",
+      "durable_output_dir": "/content/drive/MyDrive/Chuyende-stage-a2/runs/HDFS/seed-42"
+    },
+    {
+      "order": 2,
+      "seed": 1337,
+      "run_id": "RUN-STAGE-A2-HDFS-SEED1337",
+      "relative_output_dir": "experiments/runs/stage-a2/HDFS/seed-1337",
+      "durable_output_dir": "/content/drive/MyDrive/Chuyende-stage-a2/runs/HDFS/seed-1337"
+    },
+    {
+      "order": 3,
+      "seed": 2024,
+      "run_id": "RUN-STAGE-A2-HDFS-SEED2024",
+      "relative_output_dir": "experiments/runs/stage-a2/HDFS/seed-2024",
+      "durable_output_dir": "/content/drive/MyDrive/Chuyende-stage-a2/runs/HDFS/seed-2024"
+    },
+    {
+      "order": 4,
+      "seed": 7,
+      "run_id": "RUN-STAGE-A2-HDFS-SEED7",
+      "relative_output_dir": "experiments/runs/stage-a2/HDFS/seed-7",
+      "durable_output_dir": "/content/drive/MyDrive/Chuyende-stage-a2/runs/HDFS/seed-7"
+    },
+    {
+      "order": 5,
+      "seed": 999,
+      "run_id": "RUN-STAGE-A2-HDFS-SEED999",
+      "relative_output_dir": "experiments/runs/stage-a2/HDFS/seed-999",
+      "durable_output_dir": "/content/drive/MyDrive/Chuyende-stage-a2/runs/HDFS/seed-999"
+    }
+  ],
+  "training_hyperparameters": {
+    "architecture": "TemporalGraphViewEncoder",
+    "d_node": 128,
+    "d_edge": 64,
+    "d_msg": 128,
+    "n_heads": 4,
+    "d_time_proj": 32,
+    "d_rel_emb": 32,
+    "d_type_emb": 32,
+    "dropout": 0.1,
+    "num_canonical_relations": 8,
+    "num_node_types": 4,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.98,
+    "adam_eps": 1e-08,
+    "scheduler": "LinearWarmupCosineDecay",
+    "warmup_ratio": 0.05,
+    "warmup_steps": 573,
+    "min_lr": 1e-05,
+    "temporal_window_size": 256,
+    "gradient_accumulation_steps": 4,
+    "nominal_effective_batch_size_events": 1024,
+    "clip_norm": 1.0,
+    "max_epochs": 12,
+    "early_stopping_patience": 3,
+    "checkpoint_selection": "MINIMUM_GLOBAL_VALIDATION_L_GRAPH",
+    "group_objective": "EXACT_MULTI_TASK_NORMALIZATION"
+  },
+  "validation_contract": {
+    "validation_mask_probability_rel": 0.15,
+    "validation_mask_probability_node": 0.15,
+    "validation_mask_policy": "FIXED_DETERMINISTIC_RNG_GENERATOR",
+    "validation_mask_seed": 20260823,
+    "global_loss_aggregation": true,
+    "total_validation_events": 119531,
+    "total_validation_windows": 467
+  },
+  "partial_window_contract": {
+    "train_full_windows": 2291,
+    "train_final_partial_window_events": 81,
+    "train_total_windows": 2292,
+    "train_optimizer_steps_per_epoch": 573,
+    "final_optimizer_step_group_events": 849,
+    "accumulation_gradient_weighting": "EXACT_MULTI_TASK_GROUP_NORMALIZATION"
+  },
+  "per_seed_output_contract": [
+    "RUN-MANIFEST.json",
+    "EXPERIMENTAL-SOURCE.json",
+    "ENVIRONMENT.json",
+    "TRAIN-LOG.jsonl",
+    "METRICS.json",
+    "CHECKPOINT-INVENTORY.json",
+    "TEST-FIREWALL.json",
+    "best_val_loss.pt",
+    "last_checkpoint.pt"
+  ],
+  "failure_and_retry_policy": {
+    "nan_inf_fail_closed": true,
+    "checkpoint_boundary_strict": true,
+    "incomplete_epoch_policy": "REPLAY_FROM_LAST_DURABLE_COMPLETED_EPOCH",
+    "max_retry_attempts": 0
+  },
+  "test_firewall": {
+    "test_opened": false,
+    "test_feature_reads": 0,
+    "test_label_reads": 0,
+    "test_metrics": 0
+  }
+}

@@ -39,7 +39,7 @@
     "loss_formula": "L_graph = 1.0 * L_rel + 1.0 * L_node + 0.1 * L_time"
   },
   "environment_lock": {
-    "environment_lock_path": "experiments/evidence/stage-a2/preexecution/STAGE-A2-LOCAL-EXECUTION-ENVIRONMENT-V1.5.json",
+    "environment_lock_path": "evidence/stage-a2/preexecution/STAGE-A2-LOCAL-EXECUTION-ENVIRONMENT-V1.5.json",
     "environment_lock_sha256": "81d3ca4865a95c75cc2345695091265f948ad58e705865a3f8f780a9bf09f362",
     "execution_provider": "LOCAL_WINDOWS_GPU",
     "python_version": "3.12.8",

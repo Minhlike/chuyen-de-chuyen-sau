@@ -87,7 +87,8 @@ Cây thư mục phản ánh các tệp tin hiện hữu trong repository:
 │   └── V3-PROBE-RESULT.json             # Kết quả đánh giá hạ nguồn V3
 ├── experiments/
 │   ├── plans/
-│   │   └── STAGE-A2-FINAL-12-EPOCH-AUTHORITY.json # Kế hoạch thực nghiệm 12-epoch chính thức
+│   │   ├── STAGE-A2-FINAL-12-EPOCH-AUTHORITY.json       # Kế hoạch thực nghiệm 12-epoch chính thức
+│   │   └── STAGE-A2-FIVE-SEED-EXECUTION-PLAN-V1.5.json  # Kế hoạch thực nghiệm lịch sử (nguyên bản)
 │   ├── nineplus/
 │   │   ├── confirmatory/                # Manifest cấu hình các đợt chạy xác nhận
 │   │   ├── evaluation_v3/               # Kết quả đánh giá hạ nguồn V3 (JSON)

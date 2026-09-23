@@ -1,0 +1,15 @@
+# Set default behavior to normalize text files to LF on commit and checkout
+* text=auto eol=lf
+
+# Explicit binary files
+*.docx binary
+*.pdf binary
+*.pt binary
+*.png binary
+*.tar.gz binary
+
+# Exact bitwise preservation of CRLF provenance artifacts (-text disables any EOL normalization)
+evidence/stage-a2/preexecution/STAGE-A2-LOCAL-EXECUTION-ENVIRONMENT-V1.5.json -text
+experiments/plans/STAGE-A2-FIVE-SEED-EXECUTION-PLAN-V1.5.json -text
+experiments/nineplus/confirmatory/CONF_MULTI_VIEW_ALIGNED_seed7_1789452137/RUN-MANIFEST.json -text
+experiments/nineplus/confirmatory/CONF_MULTI_VIEW_ALIGNED_seed999_1789541331/RUN-MANIFEST.json -text
