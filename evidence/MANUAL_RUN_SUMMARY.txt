@@ -1,0 +1,33 @@
+﻿=====================================================================
+BÁO CÁO TÁI LẬP THỰC NGHIỆM ĐỘC LẬP (MANUAL RUN SUMMARY)
+=====================================================================
+Thời gian ghi nhận (UTC): 2026-09-18T09:59:03.1224842Z
+Thư mục lưu trữ phiên chạy: D:\Research\manual_reproduction\runs\1789724927
+Git Commit SHA:           14e04d73c64de315806bd862fb73b2a812f1f50b
+Git Status:               DIRTY (9 modified/untracked files)
+Môi trường thực thi:      
+Exit Status:              PASS (All Gating Conditions Met)
+
+THÔNG TIN ĐẦU VÀO VÀ MÃ BĂM DỮ LIỆU ĐÃ KIỂM CHỨNG:
+  - hdfs_ssl_train.pt:       0422677f5357494fbc587cac4b6de2004781e71d9b8087b4c8f9f0cd160f3363
+  - hdfs_ssl_val.pt:         96bdab531c3545f4a0f0ed7f87e47cba985c2bc4cac7a3e6c04245b5c712fbe9
+  - hdfs_vocab.json:         7631ce3beb6861845a043c7e49e156fe79b011b6d85228a060708d03fecb0f73
+  - hdfs_probe_labels_val.pt: 3364428ddbdf8d48744fc8a9492988a9467a88a4de3bf01ae8c9d106df460b1a
+
+KẾT QUẢ THỰC TẾ QUAN SÁT TỪ ĐỢT CHẠY MỚI (OBSERVED RUN METRICS):
+  - Run ID:                  CONF_SEQUENCE_ONLY_seed42_1789724929
+  - Thư mục Confirmatory:    D:\Research\experiments\nineplus\confirmatory\CONF_SEQUENCE_ONLY_seed42_1789724929
+  - Architecture:            SEQUENCE_ONLY
+  - Seed:                    42
+  - Status:                  COMPLETED
+  - Total Epochs Trained:    6
+  - Early Stopped:           True
+  - Best Epoch:              3
+  - Best Val Loss (Observed):0.00921815038938671
+  - Latent Variance Var(z):  0.09349559992551804
+  - Peak VRAM:               170.4453125 MB
+  - Training Internal Probe AP:      0.8993850472022873
+  - Training Internal Probe ROC-AUC: 0.9972634577897737
+  - Ghi chú phân định Protocol:     Các chỉ số AP/ROC-AUC ở trên là của đầu dò nội bộ (training internal probe), không nhầm lẫn với frozen-probe V3 được đánh giá độc lập sau đó.
+  - Checkpoint SHA-256 mới:  926b32512577ac66d8adc29bd145bf45868d176c440c733fb7e074c6470621cc
+=====================================================================

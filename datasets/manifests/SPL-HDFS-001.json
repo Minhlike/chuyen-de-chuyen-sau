@@ -1,0 +1,42 @@
+{
+  "dataset_id": "DATA-HDFS-001",
+  "dataset_name": "HDFS LogHub Benchmark",
+  "split_id": "SPL-HDFS-001",
+  "version": "v1.2",
+  "status": "VALIDATED",
+  "partition_strategy": "STRICT_CAUSAL_TIME",
+  "causal_sorting_key": "(session_start_time, block_id)",
+  "raw_dataset_acquired": true,
+  "planned_ratios": {
+    "train": 0.70,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "holdout_specification": {
+    "oov_anomaly_template_ratio": 0.10
+  },
+  "verified_raw_artifacts": [
+    {
+      "file_name": "HDFS_1.tar.gz",
+      "byte_count": 161886385,
+      "sha256": "6ca6c5bc2671c66afecee9369a2fdac606bf33997a2494ac66aa411fe3e95169",
+      "raw_total_line_count": 11175629,
+      "valid_records_streamed": 11175629,
+      "block_associated_count": 11175629,
+      "no_block_id_count": 0,
+      "malformed_count": 0
+    },
+    {
+      "file_name": "anomaly_label.csv",
+      "byte_count": 18637554,
+      "sha256": "1c711ed6c8848fc3243fb4d092f172f31d128c8a6ec7f26ebba72ab931885ed8",
+      "labeled_block_count": 575061
+    }
+  ],
+  "acquisition_requirements": [
+    "Verify LogHub HDFS raw log archive checksum",
+    "Sort block sessions deterministically by session_start_time",
+    "Fit Rule-Based Template and Parameter Canonicalizer strictly on Train split",
+    "Keep Test split strictly sealed (0 feature records exposed to trainer)"
+  ]
+}

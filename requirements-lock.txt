@@ -1,0 +1,21 @@
+# Requirements Lock - Chuyên đề chuyên sâu
+# Official PyTorch CUDA 12.4 Wheel Index
+--extra-index-url https://download.pytorch.org/whl/cu124
+
+# Core Deep Learning & Tensor Operations (Pinned to ENVIRONMENT-LOCK.json)
+torch==2.6.0+cu124
+torch-geometric==2.6.1
+
+# Scientific Computing & Data Analysis (Verified from host environment)
+numpy==2.5.2
+scipy==1.18.0
+pandas==3.0.5
+scikit-learn==1.9.1
+
+# System & Hardware Telemetry
+psutil==7.2.2
+
+# Document & PDF QA Pipeline
+python-docx==1.2.0
+pypdfium2==5.13.0
+pywin32==312; sys_platform == 'win32'

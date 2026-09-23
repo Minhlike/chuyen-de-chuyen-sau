@@ -1,0 +1,21 @@
+{
+  "run_id": "CONF_SEQUENCE_ONLY_seed2024_1789418957",
+  "architecture": "SEQUENCE_ONLY",
+  "status": "COMPLETED",
+  "seed": 2024,
+  "total_epochs_trained": 12,
+  "max_epochs_ceiling": 12,
+  "early_stopped": true,
+  "best_epoch": 9,
+  "best_val_loss": 0.007140394707303693,
+  "final_optimizer_steps": 6564,
+  "train_minutes_total": 20.295045124999408,
+  "val_minutes_total": 1.7364579466666328,
+  "latent_variance": 0.0695514976978302,
+  "probe_ap": 0.7309698390434691,
+  "probe_roc_auc": 0.9415954415954416,
+  "peak_vram_mb": 170.44677734375,
+  "peak_ram_mb": 574.83203125,
+  "nan_count": 0,
+  "inf_count": 0
+}

@@ -1,0 +1,130 @@
+{
+  "manifest_version": "1.2",
+  "project": "Chuyên đề chuyên sâu - Học biểu diễn log an ninh",
+  "scope": "Sequence-Only Seed 42 & V3 Downstream Evaluation Artifacts",
+  "total_artifacts_cataloged": 10,
+  "clean_clone_ready": false,
+  "external_artifact_retrieval_status": "OPEN (Zenodo/OSF external storage repository pending deployment; clean git clone cannot run without local artifact placement)",
+  "artifacts": [
+    {
+      "relative_path": "experiments/runs/data/hdfs/hdfs_ssl_train.pt",
+      "artifact_role": "CACHE_TRAIN_DATA",
+      "availability": "LOCAL_ONLY",
+      "size_bytes": 64300470,
+      "sha256": "0422677f5357494fbc587cac4b6de2004781e71d9b8087b4c8f9f0cd160f3363",
+      "producer_or_run_id": "STAGE_A2_DATA_EXTRACTION",
+      "run_source_commit": "d6fb10b",
+      "required_for_training": true,
+      "required_for_v3_evaluation": true,
+      "description": "Preprocessed HDFS self-supervised training sequences tensor package (35,000 sessions)"
+    },
+    {
+      "relative_path": "experiments/runs/data/hdfs/hdfs_ssl_val.pt",
+      "artifact_role": "CACHE_VAL_DATA",
+      "availability": "LOCAL_ONLY",
+      "size_bytes": 12125250,
+      "sha256": "96bdab531c3545f4a0f0ed7f87e47cba985c2bc4cac7a3e6c04245b5c712fbe9",
+      "producer_or_run_id": "STAGE_A2_DATA_EXTRACTION",
+      "run_source_commit": "d6fb10b",
+      "required_for_training": true,
+      "required_for_v3_evaluation": true,
+      "description": "Preprocessed HDFS self-supervised validation sequences tensor package (7,500 sessions)"
+    },
+    {
+      "relative_path": "experiments/runs/data/hdfs/hdfs_vocab.json",
+      "artifact_role": "VOCABULARY_METADATA",
+      "availability": "LOCAL_ONLY",
+      "size_bytes": 5897,
+      "sha256": "7631ce3beb6861845a043c7e49e156fe79b011b6d85228a060708d03fecb0f73",
+      "producer_or_run_id": "STAGE_A2_DATA_EXTRACTION",
+      "run_source_commit": "d6fb10b",
+      "required_for_training": true,
+      "required_for_v3_evaluation": true,
+      "description": "Token vocabularies (event templates, parameter tokens, type dictionaries)"
+    },
+    {
+      "relative_path": "experiments/runs/data/hdfs/hdfs_split_authority_cache.json",
+      "artifact_role": "SPLIT_AUTHORITY_CACHE",
+      "availability": "LOCAL_ONLY",
+      "size_bytes": 19997919,
+      "sha256": "23f482bd3f8d7a3c09f2b586807e34e5c52843d82341a58b725f4ae84ec31d1f",
+      "producer_or_run_id": "HDFS_SPLIT_AUTHORITY",
+      "run_source_commit": "d6fb10b",
+      "required_for_training": true,
+      "required_for_v3_evaluation": true,
+      "description": "Precomputed causal split interval cache for 11.17M HDFS records (avoids re-parsing 1.5GB raw tarball)"
+    },
+    {
+      "relative_path": "experiments/runs/data/vault/hdfs_probe_labels_train.pt",
+      "artifact_role": "PROBE_LABELS_TRAIN",
+      "availability": "LOCAL_ONLY",
+      "size_bytes": 1238560,
+      "sha256": "e6999838eb5b9dbf1aa8ff6f64e9a96d9e7ce3c0aede6feab2698223d78f3924",
+      "producer_or_run_id": "GROUND_TRUTH_VAULT",
+      "run_source_commit": "d6fb10b",
+      "required_for_training": false,
+      "required_for_v3_evaluation": true,
+      "description": "Binary anomaly labels for 35,000 Train sessions used for fitting frozen linear probe (50 epochs)"
+    },
+    {
+      "relative_path": "experiments/runs/data/vault/hdfs_probe_labels_val.pt",
+      "artifact_role": "PROBE_LABELS_VAL",
+      "availability": "LOCAL_ONLY",
+      "size_bytes": 265624,
+      "sha256": "3364428ddbdf8d48744fc8a9492988a9467a88a4de3bf01ae8c9d106df460b1a",
+      "producer_or_run_id": "GROUND_TRUTH_VAULT",
+      "run_source_commit": "d6fb10b",
+      "required_for_training": true,
+      "required_for_v3_evaluation": true,
+      "description": "Binary anomaly labels for 7,500 Validation sessions used for downstream AP/ROC-AUC evaluation"
+    },
+    {
+      "relative_path": "experiments/nineplus/confirmatory/CONF_SEQUENCE_ONLY_seed42_1789413645/best_checkpoint.pt",
+      "artifact_role": "MODEL_WEIGHTS_BEST_CHECKPOINT",
+      "availability": "LOCAL_ONLY",
+      "size_bytes": 10922752,
+      "sha256": "926b32512577ac66d8adc29bd145bf45868d176c440c733fb7e074c6470621cc",
+      "producer_or_run_id": "CONF_SEQUENCE_ONLY_seed42_1789413645",
+      "run_source_commit": "47e4ad6",
+      "required_for_training": false,
+      "required_for_v3_evaluation": true,
+      "description": "Optimal PyTorch model weights saved at Epoch 3 (val_loss=0.009218) before early stopping at Epoch 6"
+    },
+    {
+      "relative_path": "experiments/nineplus/confirmatory/CONF_SEQUENCE_ONLY_seed42_1789413645/RUN-MANIFEST.json",
+      "artifact_role": "TRAINING_RUN_MANIFEST",
+      "availability": "AVAILABLE_IN_GIT",
+      "size_bytes": 604,
+      "sha256": "d8f4265a34d2114a7eebdcd7f82c2a615b7573cc7ab08330ef9fee7a1bcb90b6",
+      "producer_or_run_id": "CONF_SEQUENCE_ONLY_seed42_1789413645",
+      "run_source_commit": "47e4ad6",
+      "required_for_training": false,
+      "required_for_v3_evaluation": false,
+      "description": "Machine-readable run configuration, telemetry, peak VRAM (170.4 MB), and completion status"
+    },
+    {
+      "relative_path": "experiments/nineplus/confirmatory/CONF_SEQUENCE_ONLY_seed42_1789413645/TRAIN-LOG.jsonl",
+      "artifact_role": "TRAINING_STEP_LOG",
+      "availability": "AVAILABLE_IN_GIT",
+      "size_bytes": 657205,
+      "sha256": "adf20987d9adeb9ed1c2abb4da35e64cbd951006c9c2105ecde880b03a224f8e",
+      "producer_or_run_id": "CONF_SEQUENCE_ONLY_seed42_1789413645",
+      "run_source_commit": "47e4ad6",
+      "required_for_training": false,
+      "required_for_v3_evaluation": false,
+      "description": "Per-step loss logs, learning rate progression, and epoch boundary statistics"
+    },
+    {
+      "relative_path": "experiments/nineplus/evaluation_v3/CONF_SEQUENCE_ONLY_seed42_1789413645/V3-PROBE-RESULT.json",
+      "artifact_role": "DOWNSTREAM_EVALUATION_RESULT",
+      "availability": "AVAILABLE_IN_GIT",
+      "size_bytes": 791,
+      "sha256": "f32970a265f7509344e134ace6a0ea65918856b9ce4a9526b15744abe4b01606",
+      "producer_or_run_id": "V3_EVALUATION_HARNESS",
+      "run_source_commit": "878a3db",
+      "required_for_training": false,
+      "required_for_v3_evaluation": false,
+      "description": "Frozen linear probe evaluation metrics (AP=1.0000, ROC-AUC=1.0000, latent variance=0.00453)"
+    }
+  ]
+}

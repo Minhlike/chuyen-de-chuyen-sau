@@ -1,0 +1,17 @@
+{
+  "run_id": "CONF_GRAPH_ONLY_seed999_1789449583",
+  "architecture": "GRAPH_ONLY",
+  "status": "COMPLETED",
+  "seed": 999,
+  "source_checkpoint": "D:\\Research\\.artifacts\\stage-a2\\HDFS\\seed-999\\best_val_loss.pt",
+  "best_epoch": 12,
+  "best_val_loss": 0.609499505038375,
+  "latent_variance": 0.07383289933204651,
+  "anti_collapse_pass": true,
+  "probe_ap": 0.6814975662013978,
+  "probe_roc_auc": 0.8857399910031489,
+  "zero_fallback_count": 0,
+  "stream_seconds": 289.623127800005,
+  "nan_count": 0,
+  "inf_count": 0
+}

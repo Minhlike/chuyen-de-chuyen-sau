@@ -1,0 +1,50 @@
+{
+  "protocol": "FROZEN_INPUT_MASKING_ABLATION",
+  "allowed_inference": "Dynamic parameter slots contribute information used by the learned frozen representation.",
+  "forbidden_inference": "Parameter-aware training is proven superior to a separately trained template-only model.",
+  "results": [
+    {
+      "model_seed": 42,
+      "run_id": "CONF_SEQUENCE_ONLY_seed42_1789413645",
+      "mean_cosine_similarity": 0.9580974578857422,
+      "min_cosine_similarity": 0.9539419412612915,
+      "mean_l2_distance": 3.274153709411621,
+      "ap_params_present": 1.0,
+      "ap_params_masked": 1.0,
+      "delta_ap_masking": 0.0,
+      "roc_params_present": 1.0,
+      "roc_params_masked": 1.0,
+      "delta_roc_masking": 0.0,
+      "semantic_contribution_detected": true
+    },
+    {
+      "model_seed": 7,
+      "run_id": "CONF_SEQUENCE_ONLY_seed7_1789415728",
+      "mean_cosine_similarity": 0.8200511932373047,
+      "min_cosine_similarity": 0.8126632571220398,
+      "mean_l2_distance": 6.77777624130249,
+      "ap_params_present": 1.0,
+      "ap_params_masked": 1.0,
+      "delta_ap_masking": 0.0,
+      "roc_params_present": 1.0,
+      "roc_params_masked": 1.0,
+      "delta_roc_masking": 0.0,
+      "semantic_contribution_detected": true
+    },
+    {
+      "model_seed": 999,
+      "run_id": "CONF_SEQUENCE_ONLY_seed999_1789420295",
+      "mean_cosine_similarity": 0.9546131491661072,
+      "min_cosine_similarity": 0.9430685043334961,
+      "mean_l2_distance": 3.405646324157715,
+      "ap_params_present": 1.0,
+      "ap_params_masked": 1.0,
+      "delta_ap_masking": 0.0,
+      "roc_params_present": 1.0,
+      "roc_params_masked": 1.0,
+      "delta_roc_masking": 0.0,
+      "semantic_contribution_detected": true
+    }
+  ],
+  "completed_at_utc": "2026-09-17T18:00:20Z"
+}

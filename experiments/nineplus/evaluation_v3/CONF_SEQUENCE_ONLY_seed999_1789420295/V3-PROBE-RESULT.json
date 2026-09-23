@@ -1,0 +1,26 @@
+{
+  "architecture": "SEQUENCE_ONLY",
+  "model_seed": 999,
+  "run_id": "CONF_SEQUENCE_ONLY_seed999_1789420295",
+  "source_commit": "47e4ad6",
+  "source_checkpoint": "D:\\Research\\experiments\\nineplus\\confirmatory\\CONF_SEQUENCE_ONLY_seed999_1789420295\\best_checkpoint.pt",
+  "train_rep_shape": [
+    35000,
+    128
+  ],
+  "val_rep_shape": [
+    7500,
+    128
+  ],
+  "train_id_hash": "35396a595ded6ab643c07ce03528da4b91c1d270979b2c52e3e11f0cebcc7e60",
+  "val_id_hash": "4f474991f03aab4856c2666a671bee3fc69d8e893e22e9c2d9ca1269b8bd68ae",
+  "probe_seed": 10007,
+  "probe_optimizer_steps": 6850,
+  "average_precision": 1.0,
+  "roc_auc": 1.0,
+  "latent_variance": 0.0060974606312811375,
+  "nan_count": 0,
+  "inf_count": 0,
+  "anti_collapse_pass": false,
+  "timestamp_utc": "2026-09-17T17:45:45Z"
+}
