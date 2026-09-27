@@ -1,0 +1,30 @@
+{
+  "status": "EXPORT_ACCEPTED",
+  "export_starting_head": "d7578872c9b101450ce1b1fcaa73f52dd1c97309",
+  "research_starting_head": "cb6b30028501690c8b7dc70f8e72f78a68ce38f0",
+  "research_branch": "codex/omml-ch1-ch2-clarity",
+  "research_final_head": "77e4869f4d4cfad4950444ad02cb22d33c16e991",
+  "export_release_branch": "codex/omml-ch1-ch2-clarity-release",
+  "baseline_docx_sha256": "9bb11639807081f6ee3dafa8907f5293913ffec5697b945993b905ad93a67033",
+  "baseline_pdf_sha256": "087f1a69721b063fad07362ea184974143c4822d293d67db4ade6906754ce302",
+  "final_docx_sha256": "93b8df9d8485b153b97cacb9025aeeca475d28c454299852131b7db06e0937c7",
+  "final_pdf_sha256": "307154e3d4cdabf35f73dbd7e95666baa6dbffd3d70da74c2a2ffc0989b3883b",
+  "original_chapter_1_2_omml_inventoried": 555,
+  "explanatory_passages_added": 45,
+  "original_math_zones_directly_adjacent_to_new_explanations": 304,
+  "arithmetic_examples_verified": 31,
+  "native_omml_examples_added": 33,
+  "original_math_zones_corrected": 2,
+  "chapter_3_content_unchanged": true,
+  "export_word_com_reopen_without_repair": true,
+  "export_word_com_reexported_pdf_pages": 129,
+  "export_word_com_reexported_pdf_text_matches_release_all_pages": true,
+  "export_release_qa": "OMML-CLARITY-RELEASE-QA.json",
+  "released_files": [
+    "Chuyên đề chuyên sâu.docx",
+    "Chuyên đề chuyên sâu.pdf",
+    "OMML-CLARITY-RELEASE-QA.json",
+    "OMML-CLARITY-RELEASE-PROVENANCE.json",
+    "OMML-CLARITY-FINAL-REPORT.md"
+  ]
+}

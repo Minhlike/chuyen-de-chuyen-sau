@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "docx_sha256": "93b8df9d8485b153b97cacb9025aeeca475d28c454299852131b7db06e0937c7",
+  "pdf_sha256": "307154e3d4cdabf35f73dbd7e95666baa6dbffd3d70da74c2a2ffc0989b3883b",
+  "docx_zip_xml_valid": true,
+  "original_math_zones": 622,
+  "final_math_zones": 655,
+  "chapter_math_zones_final": {
+    "1": 41,
+    "2": 547,
+    "3": 67
+  },
+  "empty_math_indexes": [],
+  "dangling_relationship_targets": [],
+  "missing_document_relationship_ids": [],
+  "unchanged_original_math_surfaces_in_order": true,
+  "chapter_3_text_sha256_baseline": "ddf20d1f4927a6f39ebd33804e80d891178a2df5a02e40ccd549519e7465c96b",
+  "chapter_3_text_sha256_final": "ddf20d1f4927a6f39ebd33804e80d891178a2df5a02e40ccd549519e7465c96b",
+  "chapter_3_text_unchanged": true,
+  "chapter_3_math_unchanged": true,
+  "field_code_type_counts_baseline": {
+    "TOC": 3,
+    "PAGEREF": 82,
+    "CITATION": 186,
+    "REF": 8,
+    "SEQ": 24,
+    "BIBLIOGRAPHY": 1
+  },
+  "field_code_type_counts_final": {
+    "TOC": 3,
+    "PAGEREF": 82,
+    "CITATION": 186,
+    "REF": 8,
+    "SEQ": 24,
+    "BIBLIOGRAPHY": 1
+  },
+  "bookmark_start_counts": [
+    114,
+    114
+  ],
+  "drawing_counts": [
+    11,
+    11
+  ],
+  "embedded_docx_font_parts": [
+    9,
+    9
+  ],
+  "metadata_baseline_and_final": {
+    "title": [
+      "Nghiên cứu phương pháp trích xuất đặc trưng đối với dữ liệu logs trong phát hiện tấn công",
+      "Nghiên cứu phương pháp trích xuất đặc trưng đối với dữ liệu logs trong phát hiện tấn công"
+    ],
+    "subject": [
+      "Chuyên đề chuyên sâu",
+      "Chuyên đề chuyên sâu"
+    ],
+    "creator": [
+      "Đoàn Ngọc Hoàng Minh",
+      "Đoàn Ngọc Hoàng Minh"
+    ],
+    "lastModifiedBy": [
+      "Đoàn Ngọc Hoàng Minh",
+      "Đoàn Ngọc Hoàng Minh"
+    ],
+    "created": [
+      "2026-07-29T19:43:00Z",
+      "2026-07-29T19:43:00Z"
+    ]
+  },
+  "pdf_pages": 129,
+  "chapter_start_pdf_pages": {
+    "1": 15,
+    "2": 42,
+    "3": 99
+  },
+  "blank_or_nearly_blank_chapter_pages": [],
+  "text_outside_page_boxes": [],
+  "pdfa_1a_xmp": true,
+  "pdf_output_intent_present": true,
+  "pdf_font_embedding": {
+    "/ABCDEE+TimesNewRomanPSMT": true,
+    "/ABCDEE+TimesNewRomanPS-BoldMT": true,
+    "/ABCDEE+TimesNewRomanPS-ItalicMT": true,
+    "/ABCDEE+Calibri": true,
+    "/ABCDEE+TimesNewRomanPS-BoldItalicMT": true,
+    "/ABCDEE+Arial-BoldMT": true,
+    "/ABCDEE+Arial-ItalicMT": true,
+    "/ABCDEE+CambriaMath": true,
+    "/ABCEEE+ArialMT": true,
+    "/ABCEEE+Consolas": true,
+    "/ABCEEE+CambriaMath": true
+  },
+  "table_3_7b_in_list": true
+}
