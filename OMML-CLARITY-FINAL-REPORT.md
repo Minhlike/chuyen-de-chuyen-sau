@@ -1,38 +1,44 @@
-# Hiệu chỉnh chú giải công thức OMML Chương 1–2
+# Nghiệm thu sửa chú giải công thức Chương 1–2
 
 ## Nguồn và phạm vi
 
-- Repo xuất xưởng bắt đầu tại `d7578872c9b101450ce1b1fcaa73f52dd1c97309`; repo xưởng bắt đầu tại `cb6b30028501690c8b7dc70f8e72f78a68ce38f0`.
-- Nhánh xưởng: `codex/omml-ch1-ch2-clarity`, commit đã push `77e4869f4d4cfad4950444ad02cb22d33c16e991`. Nhánh phát hành: `codex/omml-ch1-ch2-clarity-release`.
-- Master DOCX gốc được lấy trực tiếp từ repo xuất xưởng, SHA-256 `9bb11639807081f6ee3dafa8907f5293913ffec5697b945993b905ad93a67033`; PDF gốc `087f1a69721b063fad07362ea184974143c4822d293d67db4ade6906754ce302`.
-- DOCX cuối SHA-256 `93b8df9d8485b153b97cacb9025aeeca475d28c454299852131b7db06e0937c7`; PDF cuối `307154e3d4cdabf35f73dbd7e95666baa6dbffd3d70da74c2a2ffc0989b3883b`.
+- Bản nền là DOCX trước đợt sửa OMML lỗi, lấy từ commit `d7578872c9b101450ce1b1fcaa73f52dd1c97309` của repo xuất xưởng. SHA-256: `9bb11639807081f6ee3dafa8907f5293913ffec5697b945993b905ad93a67033`.
+- Bản nền PDF SHA-256: `087f1a69721b063fad07362ea184974143c4822d293d67db4ade6906754ce302`.
+- Branch xưởng: `codex/omml-clarity-repair`, bắt đầu từ `cb6b30028501690c8b7dc70f8e72f78a68ce38f0`.
+- Chỉ chú giải công thức Chương 1–2. Nội dung và thứ tự Chương 3, biểu thức gốc còn lại, citation fields, bookmarks, hình và các thành phần ZIP khác được đối chiếu với bản nền.
 
-## Kết quả
+## Kết quả sửa
 
-Đã kiểm kê 555 vùng công thức OMML gốc trong Chương 1–2, gồm cả công thức inline và 52 vùng trong bảng: Chương 1 có 30, Chương 2 có 525. Hồ sơ chi tiết từng công thức và toàn bộ QA nằm trong repo xưởng. Đã thêm 45 đoạn chú giải theo ngữ cảnh, trực tiếp hỗ trợ 304 vùng công thức; 251 vùng còn lại được rà soát với lời giải thích vốn có. Có 31 ví dụ thay số đã kiểm tra độc lập và 33 vùng OMML native mới cho ví dụ. Không chuyển phương trình thành ảnh hay văn bản giả công thức.
+- Kiểm kê 555 vùng OMML ở Chương 1–2, kể cả biểu thức inline và trong bảng; 30 ở Chương 1, 525 ở Chương 2. Mỗi bản ghi có vị trí, biểu thức, ký hiệu, độ khó, nguy cơ diễn giải sai và văn cảnh. Nhiều vùng là ký hiệu lặp lại trong đoạn/bảng/hình; 45 chú giải theo nhóm được đặt gần các cụm công thức thay vì lặp 555 lần.
+- Thêm 45 đoạn chú giải, 31 phép tính minh họa được kiểm tra số học, và 77 vùng OMML mới. Trong 77 vùng này, 69 có cấu trúc phân số/chỉ số/căn/tổng hoặc cấu trúc toán học khác; 8 vùng ngắn là đẳng thức/bất đẳng thức đơn giản trong `m:oMath`. Không có phép thay số nào chuyển thành ảnh hoặc LaTeX dạng chữ.
+- Hai công thức gốc được sửa có ghi lý do và chứng cứ riêng trong `OMML-CLARITY-REPAIR-MATH-CORRECTIONS.json`: mẫu số `L_MPP` đếm khe tham số hợp lệ, và đầu hồi quy `L_time` nhận cặp trạng thái có kích thước đã công bố. Không thay đổi kết quả thực nghiệm hoặc claim an ninh.
+- Bỏ duy nhất ngắt trang cứng trước chú thích Bảng 2.4 vì sau khi thêm chú giải nó tạo một trang gần trống. Bảng còn tiêu đề lặp ở trang kế tiếp.
 
-Hai công thức gốc được sửa về toán học, với lý do và bằng chứng ở repo xưởng:
+## Mẫu trước → sau
 
-1. `L_MPP`: mẫu số cũ đếm sự kiện dù tử số cộng trên các khe tham số bị che. Mẫu số mới đếm đúng các khe hợp lệ, khớp phép lấy trung bình trong Đoạn mã 2.2.
-2. `L_time`: đầu hồi quy được định nghĩa nhận vector ghép kích thước `2d_model`, trong khi công thức cũ chỉ truyền một vector `d_model`. Công thức mới truyền `[h_i; h_(i+1)]`.
+1. **Entropy:** trước chỉ có công thức và diễn giải ngắn; sau định nghĩa cửa sổ, tỷ lệ, trường hợp `0 log 0`, thay số `A,A,B,B → 1 bit`, đối chiếu trường hợp một loại `→ 0`, và nói rõ entropy không tự xác nhận tấn công.
+2. **TF-IDF:** sau phân biệt số cửa sổ tham chiếu `N` với số cửa sổ chứa một loại `n(eᵢ)`, thay `N=10`, `n(A)=2`, `n(B)=10`, rồi giải thích loại hiếm chỉ tăng trọng số thống kê.
+3. **PCA:** sau nêu các cột trực chuẩn của `P`, vector đã tâm hóa, phép chiếu còn dư, thay vector hai chiều để có `‖xₐ‖²=4` và đối chiếu ngưỡng minh họa 3; cờ lệch không xác nhận nguyên nhân độc hại.
+4. **VICReg:** sau nêu kích thước ma trận, điều kiện `B≥2`, tính phương sai và hiệp phương sai trên lô hai mẫu, và giới hạn rằng giảm tương quan tuyến tính không chứng minh độc lập thống kê.
+5. **PCGrad:** sau thay hai gradient `(1,−1)` và `(−1,0)`, chỉ ra phép chiếu cho `(0,−1)` và tích mới bằng 0; một bước chiếu không bảo đảm cả hai mục tiêu cùng cải thiện.
 
-Hai sửa đổi này không đổi mục tiêu mất mát, claim an ninh hay số liệu thực nghiệm. Nội dung khoa học Chương 3 và phần tài liệu tham khảo không đổi.
+## Cổng QA tại xưởng
 
-| Nhóm | Trước → sau |
-|---|---|
-| Entropy | Từ xác suất trừu tượng → cửa sổ A,A,B,B cho 1 bit; A,A,A,A cho 0; entropy không tự xác nhận tấn công. |
-| PCA | Từ phần dư trừu tượng → vector (3,2), trục (1,0), phần dư (0,2), bình phương chuẩn 4; vượt ngưỡng không tự chỉ ra nguyên nhân độc hại. |
-| MPP | Từ trung bình sai theo số sự kiện → trung bình đúng theo khe tham số; xác suất minh họa 0,8 và 0,5 cho mất mát khoảng 0,458. |
-| VICReg | Từ phương sai/hiệp phương sai khó hình dung → ví dụ lô vector nhỏ tính từng thành phần; không suy ra độc lập thống kê hoặc ngữ nghĩa an ninh. |
-| PCGrad | Từ phép chiếu hình thức → gradient (1,−1) và (−1,0) cho kết quả (0,−1); không bảo đảm cả hai mục tiêu cùng cải thiện. |
+| Cổng | Kết quả | Chứng cứ |
+|---|---|---|
+| Phép tính ví dụ | PASS, 31 kiểm tra | `OMML-CLARITY-REPAIR-NUMERIC-QA.json` |
+| OMML/OOXML trước Word | PASS, 622 → 699 vùng; 620 công thức gốc giữ nguyên thứ tự và XML | `OMML-CLARITY-REPAIR-QA-PREWORD.json` |
+| Word COM | PASS, mở/lưu/xuất PDF/A/đóng/mở lại không repair | `OMML-CLARITY-REPAIR-WORD-COM-QA.json` |
+| DOCX/PDF cuối | PASS, 699 vùng OMML, ZIP/XML/relationships/fields/bookmarks/fonts/PDF/A | `OMML-CLARITY-REPAIR-QA-RELEASE.json` |
+| Bố cục | PASS, rà 84 trang Chương 1–2; 45 chú giải không cắt trang | `OMML-CLARITY-REPAIR-LAYOUT-QA.json`, `OMML-CLARITY-REPAIR-PAGINATION-QA.json` |
+| Hồi quy Chương 3 | PASS, văn bản và công thức trùng bản nền | `OMML-CLARITY-REPAIR-QA-RELEASE.json` |
 
-## Nghiệm thu
+DOCX cuối SHA-256: `f9d212a5d957cbc0e6eeca019894d991e7141bbb0860ab28fda343e2e4b85c7e`. PDF cuối SHA-256: `e783de4bbb53a9c69a7b9aa0d9f4522482c7d29e480a9a67fa1ddfaf61da7356` (129 trang).
 
-- Toán học và khoa học: 31 ví dụ số PASS; hai công thức sửa có ledger, nguồn đối chiếu và phạm vi claim; không có ký hiệu mới vô nguồn trong các đoạn bổ sung.
-- OMML/OOXML: toàn tài liệu từ 622 lên 655 vùng toán, gồm 620 vùng gốc giữ nội dung/thứ tự và đúng hai vùng sửa; không công thức rỗng, quan hệ gói/rId treo hoặc XML hỏng. Chương 3 giữ 67 vùng toán.
-- Word thật: mở, cập nhật trường, phân trang, lưu, đóng/mở lại, xuất PDF/A trong repo xưởng; sau đồng bộ, mở lại trực tiếp DOCX xuất xưởng không repair và xuất PDF/A 129 trang. Văn bản cả 129 trang khớp PDF phát hành.
-- Bố cục: đã soát trang PDF 15–98 của Chương 1–2, không thấy công thức tràn lề, chú giải mồ côi, trang trắng hoặc bảng/hình vỡ. Bảng 2.4 qua trang 88–89 với hàng tiêu đề lặp.
-- Trường và phông: 186 CITATION, 82 PAGEREF, 24 SEQ, 8 REF, 3 TOC, 1 BIBLIOGRAPHY, 114 bookmark và 11 drawing được giữ; danh mục bảng còn Bảng 3.7b. PDF có PDF/A-1a XMP, output intent và 11/11 phông nhúng.
-- Hồi quy: băm văn bản và toán Chương 3 trước/sau giống nhau; metadata DOCX được giữ. Kết quả máy đọc được: `OMML-CLARITY-RELEASE-QA.json`.
+## Kiểm tra trên bản xuất xưởng
 
-Giới hạn của thiết kế gốc: `Cov_event`, `Cov_graph`, `Density_edge` mới là chỉ báo dự kiến, chưa khóa công thức đo. Phần chú giải ghi rõ giới hạn này và không dùng số giả như kết quả thực nghiệm.
+- Repo xuất xưởng bắt đầu đợt sửa này tại `360d85733ac38b63b629f3eaa275e8ab8c7ccad0`, branch phát hành `codex/omml-clarity-repair-release`.
+- DOCX/PDF sau đồng bộ có SHA-256 trùng chính xác bản đã nghiệm thu trong repo xưởng. Kiểm tra trực tiếp `OMML-CLARITY-RELEASE-QA.json` đạt PASS cho OMML, OOXML, citations, bookmarks, font nhúng, PDF/A và Chương 3.
+- Mở lại chính DOCX trong repo xuất xưởng bằng Microsoft Word ở chế độ chỉ đọc, không dùng chế độ repair. Word nhận 665 đối tượng toán và 386 fields; xuất lại PDF/A 129 trang. Văn bản trích xuất của cả 129 trang trùng PDF phát hành; byte PDF khác do dữ liệu phát sinh khi xuất.
+
+Giới hạn của QA: kiểm kê 555 vùng theo ngữ cảnh nhóm, không tạo 555 chú giải riêng; các vùng lặp lại và chú thích trong bảng/hình dùng định nghĩa gần đó. Bộ kết xuất `render_docx.py` không chạy vì môi trường Windows này thiếu `soffice.exe`; đã dùng Microsoft Word COM và PDFium để kiểm tra trực quan.
