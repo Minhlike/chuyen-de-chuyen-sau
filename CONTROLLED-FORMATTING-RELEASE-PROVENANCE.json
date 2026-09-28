@@ -1,0 +1,938 @@
+{
+  "date": "2026-09-29",
+  "status": "PASS",
+  "starting_export_head": "ad32ebe2ec9a22c9cb78feb7ad2e79ed489f5721",
+  "starting_factory_worktree_head": "52447775a12bf1497425606cb5bfca773dd98723",
+  "factory_branch": "codex/controlled-thesis-formatting",
+  "factory_commit": "9552c0215180328756798d5064a0078fb6c3406c",
+  "release_branch": "codex/controlled-thesis-formatting-release",
+  "baseline_docx_sha256": "d29077dbecb3fff58b417734e0b19e49d271c34750b361c89f534b6d6d15c319",
+  "final_docx_sha256": "a8d225253a83965050a0efd5843b20b0ebecea5df3954d9ecad12d9274e48d71",
+  "final_pdf_sha256": "8c36df58cd16c85ad0c1ea9697603d7db370c98410d8d82fe95e8435b185508c",
+  "changes": {
+    "baseline_docx_sha256": "d29077dbecb3fff58b417734e0b19e49d271c34750b361c89f534b6d6d15c319",
+    "changes": [
+      {
+        "original_body_indices": [
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106
+        ],
+        "reason": "11 prose Lời nói đầu: TNR 14 pt, 1.5; giữ nội dung và indent/căn lề"
+      },
+      {
+        "original_body_indices": [
+          302,
+          366,
+          402,
+          557,
+          584,
+          596,
+          602,
+          605,
+          645,
+          646,
+          647,
+          652
+        ],
+        "reason": "12 prose Chương 2–3: 13 → 14 pt, 1.3 → 1.5; không sửa heading/table/code/caption/math"
+      },
+      {
+        "original_body_indices": [
+          583,
+          595,
+          601,
+          604
+        ],
+        "reason": "Đoạn mã 3.1 → 3.4 theo thứ tự xuất hiện; native SEQ; giữ nguyên code và phần mô tả caption"
+      },
+      {
+        "original_body_indices": [
+          650,
+          651
+        ],
+        "reason": "Hình 3.1: sao chép đúng pPr/rPr caption Hình 2.4, native SEQ và bookmark; giữ ảnh đi cùng caption"
+      },
+      {
+        "original_body_indices": [
+          648,
+          662,
+          668
+        ],
+        "reason": "Bảng 3.7b/3.8/3.9 → 3.8/3.9/3.10; giữ nguyên nội dung bảng"
+      },
+      {
+        "original_body_indices": [
+          72,
+          73
+        ],
+        "reason": "Thêm Hình 3.1 vào kết quả danh mục hình native, dùng hyperlink/PAGEREF theo hệ hiện có"
+      },
+      {
+        "original_body_indices": [
+          621
+        ],
+        "reason": "Bảng 3.3: giảm padding ngang 120 → 36 twip; giữ nguyên grid, font, số liệu và OMML header"
+      },
+      {
+        "original_body_indices": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92
+        ],
+        "reason": "Chỉ danh mục bảng: spacing 1.5 → 1.4, Before/After 0; giữ font 11 pt hiện hành"
+      },
+      {
+        "original_body_indices": [
+          92,
+          93
+        ],
+        "reason": "Chuyển field end TOC sang entry cuối, bỏ đoạn đóng field trống có spacing thừa; giữ nguyên field code và section break"
+      },
+      {
+        "original_body_indices": [
+          649,
+          651
+        ],
+        "reason": "Chống tách header bảng tái lập khỏi dữ liệu và chống tách các dòng caption Hình 3.1"
+      }
+    ],
+    "reference_changes": [
+      {
+        "original_body_index": 646,
+        "before": "Bảng 3.7b",
+        "after": "Bảng 3.8",
+        "target": "BK_TBL_3_008"
+      },
+      {
+        "original_body_index": 661,
+        "before": "Bảng 3.8",
+        "after": "Bảng 3.9",
+        "target": "BK_TBL_3_009"
+      },
+      {
+        "original_body_index": 665,
+        "before": "Bảng 3.8",
+        "after": "Bảng 3.9",
+        "target": "BK_TBL_3_009"
+      },
+      {
+        "original_body_index": 667,
+        "before": "Bảng 3.9",
+        "after": "Bảng 3.10",
+        "target": "BK_TBL_3_010"
+      },
+      {
+        "original_body_index": 671,
+        "before": "Bảng 3.9",
+        "after": "Bảng 3.10",
+        "target": "BK_TBL_3_010"
+      },
+      {
+        "original_body_index": 652,
+        "before": "Hình 3.1",
+        "after": "Hình 3.1",
+        "target": "BK_FIG_3_001"
+      }
+    ],
+    "field_counts_before": {
+      "TOC": 3,
+      "PAGEREF": 82,
+      "CITATION": 186,
+      "REF": 8,
+      "SEQ": 24,
+      "BIBLIOGRAPHY": 1
+    },
+    "field_counts_after": {
+      "TOC": 3,
+      "PAGEREF": 83,
+      "CITATION": 186,
+      "REF": 14,
+      "SEQ": 30,
+      "BIBLIOGRAPHY": 1
+    },
+    "body13_indices": [
+      302,
+      366,
+      402,
+      557,
+      584,
+      596,
+      602,
+      605,
+      645,
+      646,
+      647,
+      652
+    ],
+    "caption_style_source_original_body_index": 564,
+    "bookmark_renames": {
+      "BK_TBL_3_008": "BK_TBL_3_009",
+      "BK_TBL_3_009": "BK_TBL_3_010",
+      "_Toc_B37b": "_TocCF_Table38"
+    },
+    "kept_13pt_heading_indices": [
+      284,
+      289,
+      303,
+      311,
+      315,
+      320,
+      332,
+      337,
+      349,
+      354,
+      371,
+      381,
+      387,
+      389,
+      396,
+      405,
+      413,
+      424,
+      428,
+      443,
+      449,
+      455,
+      460,
+      476,
+      487,
+      495,
+      501,
+      505,
+      518,
+      532,
+      550,
+      565
+    ],
+    "added_list_paragraph_index": 73,
+    "removed_empty_field_end_original_body_index": 93
+  },
+  "pagination": {
+    "status": "PASS",
+    "count": 78,
+    "changes": [
+      {
+        "bookmark": "_Toc241508825",
+        "before": "4",
+        "after": "5"
+      },
+      {
+        "bookmark": "_Toc241508826",
+        "before": "4",
+        "after": "5"
+      },
+      {
+        "bookmark": "_Toc241508827",
+        "before": "4",
+        "after": "5"
+      },
+      {
+        "bookmark": "_Toc241508828",
+        "before": "8",
+        "after": "9"
+      },
+      {
+        "bookmark": "_Toc241508829",
+        "before": "10",
+        "after": "11"
+      },
+      {
+        "bookmark": "_Toc241508830",
+        "before": "15",
+        "after": "16"
+      },
+      {
+        "bookmark": "_Toc241508831",
+        "before": "15",
+        "after": "16"
+      },
+      {
+        "bookmark": "_Toc241508832",
+        "before": "19",
+        "after": "20"
+      },
+      {
+        "bookmark": "_Toc241508833",
+        "before": "21",
+        "after": "22"
+      },
+      {
+        "bookmark": "_Toc241508834",
+        "before": "25",
+        "after": "26"
+      },
+      {
+        "bookmark": "_Toc241508835",
+        "before": "25",
+        "after": "26"
+      },
+      {
+        "bookmark": "_Toc241508836",
+        "before": "26",
+        "after": "27"
+      },
+      {
+        "bookmark": "_Toc241508837",
+        "before": "27",
+        "after": "28"
+      },
+      {
+        "bookmark": "_Toc241508838",
+        "before": "28",
+        "after": "29"
+      },
+      {
+        "bookmark": "_Toc241508839",
+        "before": "29",
+        "after": "30"
+      },
+      {
+        "bookmark": "_Toc241508840",
+        "before": "31",
+        "after": "32"
+      },
+      {
+        "bookmark": "_Toc241508841",
+        "before": "31",
+        "after": "32"
+      },
+      {
+        "bookmark": "_Toc241508842",
+        "before": "31",
+        "after": "32"
+      },
+      {
+        "bookmark": "_Toc241508843",
+        "before": "36",
+        "after": "37"
+      },
+      {
+        "bookmark": "_Toc241508844",
+        "before": "39",
+        "after": "40"
+      },
+      {
+        "bookmark": "_Toc241508845",
+        "before": "41",
+        "after": "42"
+      },
+      {
+        "bookmark": "_Toc241508846",
+        "before": "41",
+        "after": "42"
+      },
+      {
+        "bookmark": "_Toc241508847",
+        "before": "47",
+        "after": "48"
+      },
+      {
+        "bookmark": "_Toc241508848",
+        "before": "51",
+        "after": "52"
+      },
+      {
+        "bookmark": "_Toc241508849",
+        "before": "53",
+        "after": "54"
+      },
+      {
+        "bookmark": "_Toc241508850",
+        "before": "53",
+        "after": "54"
+      },
+      {
+        "bookmark": "_Toc241508851",
+        "before": "59",
+        "after": "60"
+      },
+      {
+        "bookmark": "_Toc241508852",
+        "before": "62",
+        "after": "63"
+      },
+      {
+        "bookmark": "_Toc241508853",
+        "before": "68",
+        "after": "69"
+      },
+      {
+        "bookmark": "_Toc241508854",
+        "before": "68",
+        "after": "69"
+      },
+      {
+        "bookmark": "_Toc241508855",
+        "before": "75",
+        "after": "76"
+      },
+      {
+        "bookmark": "_Toc241508856",
+        "before": "77",
+        "after": "78"
+      },
+      {
+        "bookmark": "_Toc241508857",
+        "before": "83",
+        "after": "84"
+      },
+      {
+        "bookmark": "_Toc241508858",
+        "before": "88",
+        "after": "89"
+      },
+      {
+        "bookmark": "_Toc241508859",
+        "before": "88",
+        "after": "89"
+      },
+      {
+        "bookmark": "_Toc241508860",
+        "before": "88",
+        "after": "89"
+      },
+      {
+        "bookmark": "_Toc241508861",
+        "before": "90",
+        "after": "91"
+      },
+      {
+        "bookmark": "_Toc241508862",
+        "before": "92",
+        "after": "93"
+      },
+      {
+        "bookmark": "_Toc241508863",
+        "before": "95",
+        "after": "96"
+      },
+      {
+        "bookmark": "_Toc241508864",
+        "before": "95",
+        "after": "96"
+      },
+      {
+        "bookmark": "_Toc241508865",
+        "before": "98",
+        "after": "99"
+      },
+      {
+        "bookmark": "_Toc241508866",
+        "before": "99",
+        "after": "100"
+      },
+      {
+        "bookmark": "_Toc241508867",
+        "before": "102",
+        "after": "103"
+      },
+      {
+        "bookmark": "_Toc241508868",
+        "before": "104",
+        "after": "106"
+      },
+      {
+        "bookmark": "_Toc241508869",
+        "before": "104",
+        "after": "106"
+      },
+      {
+        "bookmark": "_Toc241508870",
+        "before": "105",
+        "after": "107"
+      },
+      {
+        "bookmark": "_Toc241508871",
+        "before": "110",
+        "after": "112"
+      },
+      {
+        "bookmark": "_Toc241508872",
+        "before": "111",
+        "after": "113"
+      },
+      {
+        "bookmark": "_Toc241508873",
+        "before": "111",
+        "after": "113"
+      },
+      {
+        "bookmark": "_Toc241508874",
+        "before": "111",
+        "after": "113"
+      },
+      {
+        "bookmark": "_Toc241508875",
+        "before": "113",
+        "after": "115"
+      },
+      {
+        "bookmark": "_Toc241508876",
+        "before": "115",
+        "after": "117"
+      },
+      {
+        "bookmark": "_Toc241508877",
+        "before": "5",
+        "after": "6"
+      },
+      {
+        "bookmark": "_Toc241508878",
+        "before": "9",
+        "after": "10"
+      },
+      {
+        "bookmark": "_Toc241508879",
+        "before": "13",
+        "after": "14"
+      },
+      {
+        "bookmark": "_Toc241508880",
+        "before": "25",
+        "after": "26"
+      },
+      {
+        "bookmark": "_Toc241508881",
+        "before": "40",
+        "after": "41"
+      },
+      {
+        "bookmark": "_Toc241508882",
+        "before": "58",
+        "after": "59"
+      },
+      {
+        "bookmark": "_Toc241508883",
+        "before": "67",
+        "after": "68"
+      },
+      {
+        "bookmark": "_Toc241508884",
+        "before": "85",
+        "after": "86"
+      },
+      {
+        "bookmark": "_TocCF_Fig31",
+        "before": "104",
+        "after": "106"
+      },
+      {
+        "bookmark": "_Toc241077111",
+        "before": "6",
+        "after": "7"
+      },
+      {
+        "bookmark": "_Toc241077112",
+        "before": "12",
+        "after": "13"
+      },
+      {
+        "bookmark": "_Toc241077113",
+        "before": "24",
+        "after": "25"
+      },
+      {
+        "bookmark": "_Toc241077114",
+        "before": "44",
+        "after": "45"
+      },
+      {
+        "bookmark": "_Toc241077115",
+        "before": "67",
+        "after": "68"
+      },
+      {
+        "bookmark": "_Toc241077116",
+        "before": "70",
+        "after": "71"
+      },
+      {
+        "bookmark": "_Toc241077117",
+        "before": "77",
+        "after": "78"
+      },
+      {
+        "bookmark": "_Toc241077118",
+        "before": "89",
+        "after": "90"
+      },
+      {
+        "bookmark": "_Toc241077119",
+        "before": "91",
+        "after": "92"
+      },
+      {
+        "bookmark": "_Toc241077120",
+        "before": "96",
+        "after": "97"
+      },
+      {
+        "bookmark": "_Toc241077121",
+        "before": "97",
+        "after": "98"
+      },
+      {
+        "bookmark": "_Toc241077122",
+        "before": "98",
+        "after": "99"
+      },
+      {
+        "bookmark": "_Toc241077123",
+        "before": "100",
+        "after": "101"
+      },
+      {
+        "bookmark": "_Toc241077124",
+        "before": "101",
+        "after": "102"
+      },
+      {
+        "bookmark": "_TocCF_Table38",
+        "before": "103",
+        "after": "105"
+      },
+      {
+        "bookmark": "_Toc241077125",
+        "before": "106",
+        "after": "108"
+      },
+      {
+        "bookmark": "_Toc241077126",
+        "before": "108",
+        "after": "110"
+      }
+    ]
+  },
+  "layout": {
+    "pages": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      56,
+      57,
+      67,
+      68,
+      73,
+      74,
+      95,
+      96,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130
+    ],
+    "body13_locations": {
+      "302": 56,
+      "366": 67,
+      "402": 73,
+      "557": 95,
+      "584": 100,
+      "596": 103,
+      "602": 104,
+      "605": 105,
+      "645": 113,
+      "646": 113,
+      "647": 114,
+      "652": 116
+    },
+    "kept13_heading_count": 32,
+    "status": "PASS",
+    "chapter_3_all_pages_reviewed": [
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130
+    ],
+    "new_blank_pages": [],
+    "caption_or_digit_splits_after_fix": [],
+    "docx_sha256": "a8d225253a83965050a0efd5843b20b0ebecea5df3954d9ecad12d9274e48d71",
+    "pdf_sha256": "8c36df58cd16c85ad0c1ea9697603d7db370c98410d8d82fe95e8435b185508c"
+  },
+  "word_com_on_release": {
+    "status": "PASS",
+    "open_and_repair": false,
+    "read_only": true,
+    "word_math_count": 827,
+    "word_field_count": 400,
+    "caption_sequence_checks": {
+      "BK_TBL_3_001": {
+        "code": "SEQ Bảng \\r 1 \\* ARABIC",
+        "sequence_value": "1",
+        "label": "Bảng 3.1"
+      },
+      "BK_TBL_3_002": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "2",
+        "label": "Bảng 3.2"
+      },
+      "BK_TBL_3_003": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "3",
+        "label": "Bảng 3.3"
+      },
+      "BK_TBL_3_004": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "4",
+        "label": "Bảng 3.4"
+      },
+      "BK_TBL_3_005": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "5",
+        "label": "Bảng 3.5"
+      },
+      "BK_TBL_3_006": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "6",
+        "label": "Bảng 3.6"
+      },
+      "BK_TBL_3_007": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "7",
+        "label": "Bảng 3.7"
+      },
+      "BK_TBL_3_008": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "8",
+        "label": "Bảng 3.8"
+      },
+      "BK_TBL_3_009": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "9",
+        "label": "Bảng 3.9"
+      },
+      "BK_TBL_3_010": {
+        "code": "SEQ Bảng \\* ARABIC",
+        "sequence_value": "10",
+        "label": "Bảng 3.10"
+      },
+      "BK_CODE_3_001": {
+        "code": "SEQ ĐoạnMã \\r 1 \\* ARABIC",
+        "sequence_value": "1",
+        "label": "Đoạn mã 3.1"
+      },
+      "BK_CODE_3_002": {
+        "code": "SEQ ĐoạnMã \\* ARABIC",
+        "sequence_value": "2",
+        "label": "Đoạn mã 3.2"
+      },
+      "BK_CODE_3_003": {
+        "code": "SEQ ĐoạnMã \\* ARABIC",
+        "sequence_value": "3",
+        "label": "Đoạn mã 3.3"
+      },
+      "BK_CODE_3_004": {
+        "code": "SEQ ĐoạnMã \\* ARABIC",
+        "sequence_value": "4",
+        "label": "Đoạn mã 3.4"
+      },
+      "BK_FIG_3_001": {
+        "code": "SEQ Hình \\r 1 \\* ARABIC",
+        "sequence_value": "1",
+        "label": "Hình 3.1"
+      }
+    },
+    "caption_absolute_pages": {
+      "BK_TBL_3_001": 100,
+      "BK_TBL_3_002": 102,
+      "BK_TBL_3_003": 107,
+      "BK_TBL_3_004": 108,
+      "BK_TBL_3_005": 109,
+      "BK_TBL_3_006": 111,
+      "BK_TBL_3_007": 112,
+      "BK_TBL_3_008": 115,
+      "BK_TBL_3_009": 118,
+      "BK_TBL_3_010": 120,
+      "BK_CODE_3_001": 100,
+      "BK_CODE_3_002": 102,
+      "BK_CODE_3_003": 104,
+      "BK_CODE_3_004": 104,
+      "BK_FIG_3_001": 116
+    },
+    "pageref_results": {
+      "_Toc241508820": "1",
+      "_Toc241508821": "3",
+      "_Toc241508822": "6",
+      "_Toc241508823": "7",
+      "_Toc241508824": "1",
+      "_Toc241508825": "5",
+      "_Toc241508826": "5",
+      "_Toc241508827": "5",
+      "_Toc241508828": "9",
+      "_Toc241508829": "11",
+      "_Toc241508830": "16",
+      "_Toc241508831": "16",
+      "_Toc241508832": "20",
+      "_Toc241508833": "22",
+      "_Toc241508834": "26",
+      "_Toc241508835": "26",
+      "_Toc241508836": "27",
+      "_Toc241508837": "28",
+      "_Toc241508838": "29",
+      "_Toc241508839": "30",
+      "_Toc241508840": "32",
+      "_Toc241508841": "32",
+      "_Toc241508842": "32",
+      "_Toc241508843": "37",
+      "_Toc241508844": "40",
+      "_Toc241508845": "42",
+      "_Toc241508846": "42",
+      "_Toc241508847": "48",
+      "_Toc241508848": "52",
+      "_Toc241508849": "54",
+      "_Toc241508850": "54",
+      "_Toc241508851": "60",
+      "_Toc241508852": "63",
+      "_Toc241508853": "69",
+      "_Toc241508854": "69",
+      "_Toc241508855": "76",
+      "_Toc241508856": "78",
+      "_Toc241508857": "84",
+      "_Toc241508858": "89",
+      "_Toc241508859": "89",
+      "_Toc241508860": "89",
+      "_Toc241508861": "91",
+      "_Toc241508862": "93",
+      "_Toc241508863": "96",
+      "_Toc241508864": "96",
+      "_Toc241508865": "99",
+      "_Toc241508866": "100",
+      "_Toc241508867": "103",
+      "_Toc241508868": "106",
+      "_Toc241508869": "106",
+      "_Toc241508870": "107",
+      "_Toc241508871": "112",
+      "_Toc241508872": "113",
+      "_Toc241508873": "113",
+      "_Toc241508874": "113",
+      "_Toc241508875": "115",
+      "_Toc241508876": "117",
+      "_Toc241508877": "6",
+      "_Toc241508878": "10",
+      "_Toc241508879": "14",
+      "_Toc241508880": "26",
+      "_Toc241508881": "41",
+      "_Toc241508882": "59",
+      "_Toc241508883": "68",
+      "_Toc241508884": "86",
+      "_TocCF_Fig31": "106",
+      "_Toc241077111": "7",
+      "_Toc241077112": "13",
+      "_Toc241077113": "25",
+      "_Toc241077114": "45",
+      "_Toc241077115": "68",
+      "_Toc241077116": "71",
+      "_Toc241077117": "78",
+      "_Toc241077118": "90",
+      "_Toc241077119": "92",
+      "_Toc241077120": "97",
+      "_Toc241077121": "98",
+      "_Toc241077122": "99",
+      "_Toc241077123": "101",
+      "_Toc241077124": "102",
+      "_TocCF_Table38": "105",
+      "_Toc241077125": "108",
+      "_Toc241077126": "110"
+    },
+    "source_docx": "D:\\chuyen-de-chuyen-sau\\Chuyên đề chuyên sâu.docx",
+    "document_saved_by_word": false,
+    "caption_fields_updated_in_memory": false,
+    "source_docx_sha256": "a8d225253a83965050a0efd5843b20b0ebecea5df3954d9ecad12d9274e48d71"
+  },
+  "release_commit_identification": "commit containing this provenance; see git log -- CONTROLLED-FORMATTING-RELEASE-PROVENANCE.json",
+  "delivery_files": [
+    "Chuyên đề chuyên sâu.docx",
+    "Chuyên đề chuyên sâu.pdf",
+    "CONTROLLED-FORMATTING-FINAL-REPORT.md",
+    "CONTROLLED-FORMATTING-RELEASE-QA.json",
+    "CONTROLLED-FORMATTING-RELEASE-PROVENANCE.json",
+    "README.md"
+  ]
+}
