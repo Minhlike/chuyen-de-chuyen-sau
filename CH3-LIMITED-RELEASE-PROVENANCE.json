@@ -1,0 +1,170 @@
+{
+  "date": "2026-09-29",
+  "status": "PASS",
+  "baseline": "current user-edited Word including user bullet edits",
+  "starting_export_head": "7c6847a17c24a419a6e58d8d6ffc21ab3f459f94",
+  "starting_factory_worktree_head": "eaf58836ccf363c4bec3ced8444b2253b8408a07",
+  "factory_branch": "codex/ch3-limited-clarifications",
+  "factory_commit": "52447775a12bf1497425606cb5bfca773dd98723",
+  "release_branch": "codex/ch3-limited-clarifications-release",
+  "baseline_docx_sha256": "cb6a9f9691d21c98af6c0381049412ed90ad7da268e13cae5ce25dc9c76ca57b",
+  "final_docx_sha256": "d29077dbecb3fff58b417734e0b19e49d271c34750b361c89f534b6d6d15c319",
+  "final_pdf_sha256": "649b63d107276d8b1123397d2d2e01c2c7fa6cce010ee5e2fe7e222244d903f1",
+  "changes": {
+    "baseline_docx_sha256": "cb6a9f9691d21c98af6c0381049412ed90ad7da268e13cae5ce25dc9c76ca57b",
+    "changes": [
+      {
+        "original_body_index": 599,
+        "location": "3.1.3 — W của đầu dò tuyến tính",
+        "addition": "(ở đây là trọng số của bộ phân loại tuyến tính, khác ký hiệu cửa sổ ngữ cảnh ở Chương 2)"
+      },
+      {
+        "original_body_index": 599,
+        "location": "3.1.3 — lần đầu nêu AP/ROC-AUC",
+        "addition": "AP đo chất lượng xếp hạng lớp dương và hữu ích khi dữ liệu mất cân bằng; ROC-AUC đo khả năng phân biệt hai lớp trên toàn dải ngưỡng."
+      },
+      {
+        "original_body_index": 607,
+        "location": "3.1.3 — dẫn chiếu ký hiệu các mất mát Stage A2",
+        "addition": "(ký hiệu và định nghĩa chi tiết theo Mục 2.3.3)"
+      },
+      {
+        "original_body_index": 632,
+        "location": "3.2.3 — cách đọc Var(z)",
+        "addition": "Phương sai này đo mức phân tán của biểu diễn ẩn, không tự nó chứng minh mô hình đã tránh sụp đổ biểu diễn."
+      },
+      {
+        "original_body_index": 636,
+        "location": "3.2.3 — cách đọc chênh lệch và biên không thua kém",
+        "addition": "Chênh lệch âm nghĩa là Multi-View kém Sequence trên thước đo tương ứng; biên không thua kém là mức giảm cho phép đã đặt trước."
+      },
+      {
+        "original_body_index": 640,
+        "location": "3.2.3 — trung bình và độ lệch chuẩn mẫu",
+        "addition": "qua các seed, không phải khoảng tin cậy"
+      },
+      {
+        "original_body_index": 641,
+        "location": "3.2.3 — trung bình và độ lệch chuẩn mẫu",
+        "addition": "qua các seed, không phải khoảng tin cậy"
+      },
+      {
+        "original_body_index": 659,
+        "location": "3.3.2 — hai chiều của mục tiêu tham số",
+        "addition": "Chiều đầu đếm sự kiện trong phiên; chiều sau là tối đa bốn khe tham số mỗi sự kiện."
+      },
+      {
+        "original_body_index": 664,
+        "location": "3.3.2 — ngay sau Bảng 3.8",
+        "addition": "Cosine càng gần một thì hướng hai vector càng giống nhau; khoảng cách Euclid càng lớn thì hai vector càng cách xa nhau."
+      },
+      {
+        "original_body_index": 615,
+        "location": "3.1.3 — ngay sau công thức mất mát tổng hợp",
+        "addition": "Hai hệ số đầu giữ nguyên giá trị hai mất mát tương ứng; hệ số cuối giảm thành phần thời gian còn một phần mười trước khi cộng. Các hệ số này không phải tỷ lệ đóng góp thực tế vì các mất mát có thể khác thang giá trị."
+      }
+    ],
+    "new_paragraphs": 1,
+    "modified_original_paragraphs": 8,
+    "new_math_zones": 0,
+    "original_math_zones_changed": 0,
+    "evidence_for_parameter_shape": {
+      "status": "PASS",
+      "path": "D:\\Research\\experiments\\runs\\data\\hdfs\\hdfs_ssl_train.pt",
+      "sha256": "0422677f5357494fbc587cac4b6de2004781e71d9b8087b4c8f9f0cd160f3363",
+      "max_param_slots": 4,
+      "session_count": 35000,
+      "all_first_dimensions_match_number_of_events_in_session": true,
+      "all_second_dimensions_equal_4": true,
+      "missing_slot_padding_value": 1,
+      "source_code": "src/research_agent/experiments/data/hdfs_adapter.py:440-444"
+    }
+  },
+  "layout": {
+    "status": "PASS",
+    "chapter_1_2_pages_compared": 84,
+    "chapter_1_2_pages_with_identical_pixel_render": 82,
+    "chapter_1_2_text_and_line_breaks_identical_all_pages": true,
+    "minor_word_export_glyph_position_variations": [
+      {
+        "pdf_page": 15,
+        "max_glyph_position_variation_pt": 0.276580810546875,
+        "text_and_line_breaks_identical": true,
+        "ignored_extraction_differences": "trailing spaces only"
+      },
+      {
+        "pdf_page": 16,
+        "max_glyph_position_variation_pt": 0.0501708984375,
+        "text_and_line_breaks_identical": true,
+        "ignored_extraction_differences": "trailing spaces only"
+      }
+    ],
+    "addition_pdf_pages": {
+      "probe": [
+        103
+      ],
+      "metrics": [
+        103
+      ],
+      "symbols": [
+        105
+      ],
+      "weights": [
+        106
+      ],
+      "variance": [
+        110
+      ],
+      "delta": [
+        111
+      ],
+      "sd": [
+        112
+      ],
+      "slots": [
+        117
+      ],
+      "cosine": [
+        118
+      ]
+    },
+    "all_31_pages_from_chapter_3_through_references_visually_reviewed": true,
+    "table_3_8_all_rows_on_pdf_page": 117,
+    "layout_clipping_or_new_blank_pages_found": false,
+    "original_table_xml_unchanged": true,
+    "docx_sha256": "d29077dbecb3fff58b417734e0b19e49d271c34750b361c89f534b6d6d15c319",
+    "pdf_sha256": "649b63d107276d8b1123397d2d2e01c2c7fa6cce010ee5e2fe7e222244d903f1",
+    "final_chapter_3_render_pixel_identical_to_visually_reviewed_pages": true
+  },
+  "pagination": {
+    "status": "PASS",
+    "source": "Microsoft Word bookmark adjusted page numbers",
+    "original_field_codes_and_styles_preserved": true,
+    "changes": [
+      {
+        "bookmark": "_Toc241077123",
+        "old": "99",
+        "new": "100"
+      },
+      {
+        "bookmark": "_Toc241077124",
+        "old": "100",
+        "new": "101"
+      },
+      {
+        "bookmark": "_Toc241077126",
+        "old": "107",
+        "new": "108"
+      }
+    ]
+  },
+  "release_commit_identification": "commit containing this provenance; see git log -- CH3-LIMITED-RELEASE-PROVENANCE.json",
+  "only_delivery_files": [
+    "Chuyên đề chuyên sâu.docx",
+    "Chuyên đề chuyên sâu.pdf",
+    "CH3-LIMITED-FINAL-REPORT.md",
+    "CH3-LIMITED-RELEASE-QA.json",
+    "CH3-LIMITED-RELEASE-PROVENANCE.json",
+    "README.md"
+  ]
+}
