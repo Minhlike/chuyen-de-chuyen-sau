@@ -11,8 +11,9 @@
 
 | Văn bản | Định dạng | Mục đích |
 | :--- | :---: | :--- |
-| **Bản chuyên đề chính thức** | [PDF](Chuyên%20đề%20chuyên%20sâu.pdf) | Bản dùng để đọc và phản biện (130 trang) |
+| **Bản chuyên đề chính thức** | [PDF](Chuyên%20đề%20chuyên%20sâu.pdf) | Bản dùng để đọc và phản biện (128 trang) |
 | **Bản Word** | [DOCX](Chuyên%20đề%20chuyên%20sâu.docx) | Bản nguồn có thể chỉnh sửa |
+| **QA hình thức tinh** | [Báo cáo](FINE-LAYOUT-FINAL-REPORT.md) | 14 FIX cục bộ; giữ 8 KEEP / 2 REVIEW; bảo toàn bullet, OMML và citation |
 | **Nghiệm thu chỉnh sửa hình thức có kiểm soát** | [Báo cáo](CONTROLLED-FORMATTING-FINAL-REPORT.md) | Sửa cục bộ 7 mục; bảo toàn bullet, OMML, số liệu và citation |
 | **Nghiệm thu bổ sung hạn chế Chương 3** | [Báo cáo](CH3-LIMITED-FINAL-REPORT.md) | Bảo toàn bullet Chương 1–2, công thức, số liệu và citation |
 | **Hướng dẫn kiểm chứng** | [Markdown](HUONG_DAN_CHAY_VA_XAC_MINH.md) | Hướng dẫn tái lập thực nghiệm |
