@@ -6,6 +6,8 @@
 - `TU-DIEN-PHAN-BIEN.md`: câu hỏi lý thuyết và câu trả lời theo đúng phạm vi bằng chứng.
 - `BAN-DO-CHUNG-CU.md`: vị trí cần mở trong Word, mã nguồn và tệp kết quả khi được yêu cầu kiểm chứng.
 - `V3-SEED42-RERUN-20261002.md`: biên nhận lần trích xuất lại vector và đánh giá V3 trực tiếp cho Sequence seed 42.
+- `V3-ALL-BACKBONES-RERUN-20261003.md`: biên nhận sáu lượt V3 chạy lại từ checkpoint trên GPU.
+- `KICH-BAN-DEMO-VSCODE.md`: thứ tự mở tệp, lệnh kiểm chứng nhanh và câu trả lời ngắn khi trình diễn.
 - `HANDOFF-CHO-AGENT-TIEP-THEO.md`: trạng thái đã chốt, giới hạn bằng chứng và việc chỉ làm khi có yêu cầu tiếp.
 
 Các chỉ số phát hiện trong bộ này thuộc tập **Validation HDFS**, không phải tập Test. Tập Test vẫn niêm phong trong phạm vi chuyên đề. Các mô hình Graph-Only xác nhận mới chưa được huấn luyện theo giao thức V3.

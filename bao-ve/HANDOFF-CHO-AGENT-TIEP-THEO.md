@@ -29,6 +29,7 @@ Word master mới nhất trong repo là nguồn khoa học duy nhất cho bộ t
 | `bao-ve/WORD-MASTER-CLAIMS.json` | Các chỉ số trích từ Word để đối chiếu tự động |
 | `bao-ve/V3-SEED42-RERUN-20261002.md` | Biên nhận lần chạy trực tiếp một backbone (seed 42) |
 | `bao-ve/V3-ALL-BACKBONES-RERUN-20261003.md` | Biên nhận lần chạy trực tiếp đầy đủ 06 backbone V3 |
+| `bao-ve/KICH-BAN-DEMO-VSCODE.md` | Trình tự trình diễn mã nguồn và chứng cứ khoảng 5 phút trong VS Code |
 | `HUONG_DAN_CHAY_VA_XAC_MINH.md` | Cách kiểm tra repo và chạy lại trong môi trường hiện tại |
 
 Mã dựng slide nằm ngoài repo tại `C:\Users\Acer\Documents\ChuyenDe-Slides\build\build_deck_v3.mjs`; không tự chép sang repo nếu chưa rà nhu cầu và tính phù hợp. ZIP lưu 13 tệp chỉnh Word/QA cũ đã loại khỏi repo nằm tại `C:\Users\Acer\Downloads\ChuyenDe-document-qa-archive-20261002.zip`. Bản sao DOCX/PDF trước đợt bảo vệ nằm tại `C:\Users\Acer\Downloads\ChuyenDe-backup-truoc-bao-ve-20261002\`.
@@ -40,7 +41,7 @@ Mã dựng slide nằm ngoài repo tại `C:\Users\Acer\Documents\ChuyenDe-Slide
 - `python scripts/verify_reported_results.py`: hash Word, số lượng/split HDFS và các số liệu V3/H1/H2 nêu trong Word khớp artifact đã chỉ định, PASS. Đây là phép đối chiếu tĩnh, không phải chạy lại toàn bộ thí nghiệm.
 - DOCX đọc được như ZIP/XML; PDF master 128 trang A4. PowerPoint thật mở và xuất được PDF; 10 trang slide đã xem trực quan, không thấy cắt chữ/hình; bộ finalizer báo 0 lỗi layout/integrity.
 - Môi trường CUDA `D:\Research\.venv-stage-a2-cuda\Scripts\python.exe` vượt qua GPU smoke test với `CUBLAS_WORKSPACE_CONFIG=:4096:8`; Python mặc định dùng PyTorch CPU.
-- Chạy V3 trực tiếp trên GPU với `--force-extract` cho toàn bộ **06 backbone xác nhận** (Sequence seeds 42, 7, 999; Multi-View seeds 42, 7, 999): trích xuất lại toàn bộ vector Train `[35000,128]` và Validation `[7500,128]`, huấn luyện đầu dò 50 epoch độc quyền trên Train, kiểm tra trên 100% Validation. Kết quả AP, ROC-AUC, Var(z) và số bước probe khớp chính xác tuyệt đối các giá trị công bố trong Word Master và JSON. Xem chi tiết tại `bao-ve/V3-ALL-BACKBONES-RERUN-20261003.md`.
+- Chạy V3 trực tiếp trên GPU với `--force-extract` cho toàn bộ **06 backbone xác nhận** (Sequence seeds 42, 7, 999; Multi-View seeds 42, 7, 999): trích xuất lại toàn bộ vector Train `[35000,128]` và Validation `[7500,128]`, huấn luyện đầu dò 50 epoch chỉ trên Train, kiểm tra trên 100% Validation. Kết quả AP, ROC-AUC, Var(z) và số bước probe khớp các giá trị công bố ở độ chính xác được báo cáo. Xem chi tiết tại `bao-ve/V3-ALL-BACKBONES-RERUN-20261003.md`.
 
 ## Giới hạn bằng chứng phải giữ khi bảo vệ
 

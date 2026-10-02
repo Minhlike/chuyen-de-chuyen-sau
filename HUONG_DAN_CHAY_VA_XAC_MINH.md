@@ -19,7 +19,7 @@ python scripts/verify_reported_results.py
 python -m pytest tests -q
 ```
 
-Ngày 02-10-2026: chỉ mục thực nghiệm PASS (9 dòng và 10 artifact trong manifest); 31 bài kiểm thử PASS. Lệnh `verify_reported_results.py` đối chiếu các giá trị đã đưa vào slide/tài liệu bảo vệ với JSON kết quả và manifest, **không** huấn luyện mô hình hay đọc tập Test. Nếu một artifact cục bộ thiếu, validator sẽ báo thiếu; không ghi PASS thay.
+Ngày 03-10-2026: chỉ mục thực nghiệm PASS (9 dòng và 10 artifact trong manifest); đối chiếu số Word PASS; 31 bài kiểm thử PASS (2 cảnh báo deprecation của PyTorch). Lệnh `verify_reported_results.py` đối chiếu các giá trị đã đưa vào slide/tài liệu bảo vệ với JSON kết quả và manifest, **không** huấn luyện mô hình hay đọc tập Test. Nếu một artifact cục bộ thiếu, validator sẽ báo thiếu; không ghi PASS thay.
 
 ## 3. Chọn đúng môi trường CUDA
 
@@ -52,7 +52,7 @@ $env:CUBLAS_WORKSPACE_CONFIG = ':4096:8'
 & 'D:\Research\.venv-stage-a2-cuda\Scripts\python.exe' scripts/evaluate_nineplus_v3.py --architecture SEQUENCE_ONLY --seed 42
 ```
 
-Kịch bản đóng băng backbone, fit probe trên 35.000 phiên Train và đánh giá trên 7.500 phiên Validation; nó không đánh giá Test. Điểm lịch sử trong Word/JSON là AP=1,0000 và ROC-AUC=1,0000 cho Sequence seed 42. Ngày 02-10-2026 đã chạy thêm một lần với `--force-extract`, trích xuất lại vector và thu được cùng hai chỉ số; xem [biên nhận kiểm chứng](bao-ve/V3-SEED42-RERUN-20261002.md). Năm backbone khác và Stage A2 không được chạy lại trong đợt này.
+Kịch bản đóng băng backbone, fit probe trên 35.000 phiên Train và đánh giá trên 7.500 phiên Validation; nó không đánh giá Test. Ngày 02–03/10/2026 đã chạy `--force-extract` cho đủ sáu backbone Sequence-Only/Multi-View, mỗi loại ba seed 42, 7, 999. Các chỉ số in ra khớp giá trị Word/JSON ở độ chính xác được báo cáo; xem [biên nhận sáu lượt](bao-ve/V3-ALL-BACKBONES-RERUN-20261003.md). Đây là đánh giá lại **checkpoint đã huấn luyện**, không phải huấn luyện lại Stage A2 từ đầu. Trình diễn ngắn trong VS Code theo [kịch bản này](bao-ve/KICH-BAN-DEMO-VSCODE.md) để tránh ghi đè artifact trong buổi bảo vệ.
 
 ## 6. Trả lời khi được yêu cầu chỉ chứng cứ
 
