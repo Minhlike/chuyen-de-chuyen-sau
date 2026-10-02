@@ -27,7 +27,8 @@ Word master mới nhất trong repo là nguồn khoa học duy nhất cho bộ t
 | `bao-ve/TU-DIEN-PHAN-BIEN.md` | 40 câu hỏi và trả lời bảo vệ, có giới hạn bằng chứng |
 | `bao-ve/BAN-DO-CHUNG-CU.md` | Đường dẫn mở Word, mã nguồn, dữ liệu và kết quả để trình diễn |
 | `bao-ve/WORD-MASTER-CLAIMS.json` | Các chỉ số trích từ Word để đối chiếu tự động |
-| `bao-ve/V3-SEED42-RERUN-20261002.md` | Biên nhận lần chạy trực tiếp một backbone |
+| `bao-ve/V3-SEED42-RERUN-20261002.md` | Biên nhận lần chạy trực tiếp một backbone (seed 42) |
+| `bao-ve/V3-ALL-BACKBONES-RERUN-20261003.md` | Biên nhận lần chạy trực tiếp đầy đủ 06 backbone V3 |
 | `HUONG_DAN_CHAY_VA_XAC_MINH.md` | Cách kiểm tra repo và chạy lại trong môi trường hiện tại |
 
 Mã dựng slide nằm ngoài repo tại `C:\Users\Acer\Documents\ChuyenDe-Slides\build\build_deck_v3.mjs`; không tự chép sang repo nếu chưa rà nhu cầu và tính phù hợp. ZIP lưu 13 tệp chỉnh Word/QA cũ đã loại khỏi repo nằm tại `C:\Users\Acer\Downloads\ChuyenDe-document-qa-archive-20261002.zip`. Bản sao DOCX/PDF trước đợt bảo vệ nằm tại `C:\Users\Acer\Downloads\ChuyenDe-backup-truoc-bao-ve-20261002\`.
@@ -39,12 +40,12 @@ Mã dựng slide nằm ngoài repo tại `C:\Users\Acer\Documents\ChuyenDe-Slide
 - `python scripts/verify_reported_results.py`: hash Word, số lượng/split HDFS và các số liệu V3/H1/H2 nêu trong Word khớp artifact đã chỉ định, PASS. Đây là phép đối chiếu tĩnh, không phải chạy lại toàn bộ thí nghiệm.
 - DOCX đọc được như ZIP/XML; PDF master 128 trang A4. PowerPoint thật mở và xuất được PDF; 10 trang slide đã xem trực quan, không thấy cắt chữ/hình; bộ finalizer báo 0 lỗi layout/integrity.
 - Môi trường CUDA `D:\Research\.venv-stage-a2-cuda\Scripts\python.exe` vượt qua GPU smoke test với `CUBLAS_WORKSPACE_CONFIG=:4096:8`; Python mặc định dùng PyTorch CPU.
-- Chạy V3 `SEQUENCE_ONLY` seed 42 với `--force-extract`: trích xuất Train `[35000,128]` và Validation `[7500,128]`, huấn luyện đầu dò 50 epoch, kết quả AP `1.0000`, ROC-AUC `1.0000`, Var(z) `0.004535`, 6850 bước, exit `0`. Log: `C:\Users\Acer\Downloads\ChuyenDe-backup-truoc-bao-ve-20261002\V3-force-extract-seed42-20261002.log`, SHA-256 `09EDDDD1E1CFA28A683956F73219D9DCB97A8E312233E792C9C4704BDAC8F889`. Kết quả và cache lịch sử được phục hồi đúng byte/hash sau lần chạy.
+- Chạy V3 trực tiếp trên GPU với `--force-extract` cho toàn bộ **06 backbone xác nhận** (Sequence seeds 42, 7, 999; Multi-View seeds 42, 7, 999): trích xuất lại toàn bộ vector Train `[35000,128]` và Validation `[7500,128]`, huấn luyện đầu dò 50 epoch độc quyền trên Train, kiểm tra trên 100% Validation. Kết quả AP, ROC-AUC, Var(z) và số bước probe khớp chính xác tuyệt đối các giá trị công bố trong Word Master và JSON. Xem chi tiết tại `bao-ve/V3-ALL-BACKBONES-RERUN-20261003.md`.
 
 ## Giới hạn bằng chứng phải giữ khi bảo vệ
 
 - Các chỉ số phát hiện thuộc **Validation HDFS**. Test còn niêm phong; không nói đã đánh giá Test hoặc khái quát sang bộ dữ liệu khác.
-- Mới chạy trực tiếp lại **một** V3 Sequence-Only seed 42. Không nói đã chạy lại đủ sáu backbone hoặc huấn luyện lại Stage A2.
+- Đã chạy trực tiếp lại đủ **sáu** backbone V3 xác nhận; chưa huấn luyện lại Stage A2 từ đầu (pre-training tự giám sát 12 epoch).
 - Graph-Only chưa có ba seed xác nhận theo cùng giao thức V3; probe Graph-Only lịch sử không so sánh trực tiếp được với các cấu hình V3 mới.
 - H2 không được hỗ trợ bởi Validation HDFS: chênh AP Multi-View trừ Sequence theo ba seed là `−0.2396`, `−0.3691`, `−0.4089`; trung bình `−0.3392 ± 0.0885` (độ lệch chuẩn mẫu), biên không thua kém `−0.02`. AP trung bình Multi-View `0.6608`, Sequence `1.0000`.
 - H1 không được đánh giá trực tiếp trên đích token-level vì biểu diễn dùng để thăm dò là vector phiên 128 chiều; masking là tác vụ phụ trợ. H3–H5 chưa được kiểm nghiệm đầy đủ.
