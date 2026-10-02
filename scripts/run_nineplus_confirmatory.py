@@ -90,7 +90,7 @@ def chunk_into_windows(events: List[Dict[str, Any]], window_size: int = 256) -> 
     return windows
 
 # =====================================================================
-# DATA LOADERS & DATASETS
+# Bộ nạp dữ liệu và tập dữ liệu
 # =====================================================================
 
 class SequenceSSLDataset(Dataset):
@@ -166,7 +166,7 @@ def collate_sequence_ssl(batch: List[Dict[str, Any]], max_param_slots: int = 4) 
     }
 
 # =====================================================================
-# DOWNSTREAM LINEAR PROBE EVALUATOR
+# Bộ đánh giá đầu dò tuyến tính hạ nguồn
 # =====================================================================
 
 def compute_ap_and_roc_auc(scores: np.ndarray, y_true: np.ndarray) -> Tuple[float, float]:
@@ -281,7 +281,7 @@ def evaluate_downstream_linear_probe(
     return {"probe_ap": ap, "probe_roc_auc": auc}
 
 # =====================================================================
-# CONFIRMATORY RUN 1: SEQUENCE_ONLY
+# Lượt chạy xác nhận 1: chỉ dùng chuỗi
 # =====================================================================
 
 def run_confirmatory_sequence_only(
@@ -514,7 +514,7 @@ def run_confirmatory_sequence_only(
     return manifest
 
 # =====================================================================
-# CONFIRMATORY RUN 3: MULTI_VIEW_ALIGNED_VICREG
+# Lượt chạy xác nhận 3: đa góc nhìn gióng hàng bằng VICReg
 # =====================================================================
 
 def run_confirmatory_multi_view(
@@ -781,7 +781,7 @@ def run_confirmatory_multi_view(
     return manifest
 
 # =====================================================================
-# MAIN DISPATCHER
+# Điều phối lệnh chính
 # =====================================================================
 
 if __name__ == "__main__":

@@ -387,7 +387,7 @@ class BGLRealDataAdapter:
             }, f, indent=2)
 
         # =====================================================================
-        # SEPARATE PROBE EVALUATION LABEL VAULT (TRAIN + VAL ONLY)
+# Kho nhãn riêng cho đầu dò đánh giá, chỉ dùng Train và Validation
         # =====================================================================
         torch.save({
             "probe_target": "BGL_SYSTEM_ALERT_LABEL",

@@ -75,10 +75,10 @@ def provision_artifacts(source_dir: str):
             all_passed = False
             continue
             
-        # Copy file
+        # Sao chép tệp
         shutil.copy2(src_file, dest_file)
         
-        # Verify
+        # Kiểm tra mã băm sau khi sao chép
         actual_size = dest_file.stat().st_size
         actual_sha = compute_sha256(dest_file)
         

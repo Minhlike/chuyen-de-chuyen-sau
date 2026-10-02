@@ -206,7 +206,7 @@ class HDFSRealDataAdapter:
         official_reference_count = 11175629
 
         # =====================================================================
-        # PASS 1: SPLIT AUTHORITY (PARSE ONLY TIMESTAMPS & BLOCK IDS)
+# Lượt 1: xác lập phân vùng, chỉ đọc thời gian và mã khối
         # =====================================================================
         raw_total_line_count = 0
         block_associated_event_count = 0
@@ -310,7 +310,7 @@ class HDFSRealDataAdapter:
         assert val_max_end < test_min_start
 
         # =====================================================================
-        # PASS 2: FEATURE MATERIALIZATION (STRICT TEST FIREWALL)
+# Lượt 2: tạo đặc trưng, giữ tập Test ngoài phạm vi truy cập
         # =====================================================================
         train_session_events: Dict[str, List[Dict[str, Any]]] = {}
         val_session_events: Dict[str, List[Dict[str, Any]]] = {}
@@ -416,7 +416,7 @@ class HDFSRealDataAdapter:
         assert test_vocab_contribution_count == 0
 
         # =====================================================================
-        # ASSEMBLE LABEL-FREE STAGE A1 SSL TENSORS (MULTI-PARAMETER SLOTS)
+# Ghép tensor tự giám sát Stage A1 không dùng nhãn, có nhiều khe tham số
         # =====================================================================
         # Tập phân chia Train (Train Split - Giới hạn theo ngân sách max_train_sessions)
         sorted_train_keys = sorted(
@@ -535,7 +535,7 @@ class HDFSRealDataAdapter:
             }, f, indent=2)
 
         # =====================================================================
-        # SEPARATE PROBE EVALUATION LABEL VAULT (TRAIN + VAL ONLY)
+# Kho nhãn riêng cho đầu dò đánh giá, chỉ dùng Train và Validation
         # =====================================================================
         train_probe_labels = []
         val_probe_labels = []

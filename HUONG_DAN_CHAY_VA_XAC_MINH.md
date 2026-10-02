@@ -1,127 +1,65 @@
-# CẨM NANG HƯỚNG DẪN CHẠY VÀ XÁC MINH THỰC NGHIỆM
-**Dành cho:** Giảng viên Hướng dẫn, Giảng viên Phản biện và Hội đồng Đánh giá Chuyên đề  
-**Đề tài:** *Nghiên cứu phương pháp trích xuất đặc trưng đối với dữ liệu log trong phát hiện tấn công*  
-**Sinh viên thực hiện:** Đoàn Ngọc Hoàng Minh – AT180632  
-**Giảng viên hướng dẫn:** ThS. Nguyễn Thị Thu Thủy  
-**Thời gian kiểm chứng dự kiến:** Khoảng 2–3 phút trên máy thử nghiệm (RTX 3050 Ti Laptop GPU 4 GB VRAM)
+# Hướng dẫn mở và kiểm chứng chuyên đề
 
----
+Hướng dẫn này dành cho buổi bảo vệ trên máy hiện tại. Mọi chỉ số AP/ROC-AUC đã lưu là trên **HDFS Validation**, không phải Test. Bản Word master ở thư mục gốc là nguồn diễn giải khoa học; các JSON/CSV là chứng cứ số liệu.
 
-## 1. ĐIỀU KIỆN TIÊN QUYẾT (PREREQUISITES)
-
-- **Hệ điều hành:** Windows 10/11 (64-bit).
-- **Môi trường Python:** Python 3.12 (đã kiểm chứng trên Python 3.12.8).
-- **Phần cứng đề xuất:** Card đồ họa rời NVIDIA (đã kiểm chứng trên NVIDIA GeForce RTX 3050 Ti Laptop GPU 4 GB VRAM) hoặc CPU tương thích.
-- **Công cụ dòng lệnh:** Windows PowerShell thông thường.
-
----
-
-## 2. QUY TRÌNH THIẾT LẬP MÔI TRƯỜNG (KHOẢNG 1 PHÚT)
-
-Từ thư mục gốc của repository, mở cửa sổ Windows PowerShell và thực hiện các lệnh sau:
+## 1. Mở repo và xem mã theo đường đi của dữ liệu
 
 ```powershell
-# 1. Khởi tạo môi trường ảo Python biệt lập
-python -m venv .venv
-
-# 2. Kích hoạt môi trường ảo
-.\.venv\Scripts\Activate.ps1
-
-# 3. Đảm bảo hỗ trợ UTF-8 cho PowerShell và nâng cấp pip
-$env:PYTHONUTF8 = "1"
-python -m pip install --upgrade pip
-
-# 4. Cài đặt các thư viện phụ thuộc chính thức (có hỗ trợ CUDA 12.4)
-pip install --extra-index-url https://download.pytorch.org/whl/cu124 -r requirements-lock.txt
-
-# 5. Liên kết gói mã nguồn nghiên cứu ở chế độ phát triển
-pip install -e .
+cd D:\chuyen-de-chuyen-sau
+code .
 ```
 
----
+Đọc theo thứ tự: `datasets/manifests/` → `src/research_agent/experiments/data/` → `extractor/` → `models/` → `training/` → `scripts/evaluate_nineplus_v3.py` → `experiments/nineplus/evaluation_v3/`. [Bản đồ chứng cứ](bao-ve/BAN-DO-CHUNG-CU.md) ghép từng phần với mục và bảng trong Word.
 
-## 3. NẠP ARTIFACT NGOẠI VI (KHOẢNG 30 GIÂY)
+## 2. Các lệnh không cần GPU
 
-> [!NOTE]
-> Do chính sách không lưu trữ dữ liệu nhị phân lớn trong Git (tuân thủ `.gitignore`), 7 artifact thực nghiệm ngoại vi (tổng dung lượng 108.856.472 bytes, bao gồm tensor đặc trưng `.pt`, từ vựng, nhãn kiểm định và checkpoint tối ưu `best_checkpoint.pt`; không bao gồm raw HDFS archive) cần được nạp trước khi chạy.
-
-Sử dụng script tự động để nạp và đối soát mã băm SHA-256 đối chiếu với `experiments/nineplus/ARTIFACT-MANIFEST.json`:
-
-```powershell
-# Nạp và đối soát toàn vẹn 7 artifact từ thư mục lưu trữ cục bộ/ngoại vi
-python scripts/provision_cleanroom_artifacts.py <đường_dẫn_thư_mục_chứa_artifact>
-```
-
-*Kỳ vọng:* In ra `[PASS] All 7 external artifacts successfully provisioned and verified.` và xuất báo cáo tại `evidence/ARTIFACT_PROVISIONING_REPORT.json`.
-
----
-
-## 4. BA LỆNH KIỂM CHỨNG NHANH CỦA HỘI ĐỒNG (QUICK VERIFICATION)
-
-### Lệnh 1: Kiểm tra phần cứng GPU và môi trường tính toán xác định
-```powershell
-$env:CUBLAS_WORKSPACE_CONFIG=":4096:8"
-python scripts/gpu_smoke_test.py
-```
-- **Thời gian chạy:** ~3 giây trên máy thử nghiệm.
-- **Kỳ vọng:** In ra `[PASS] GPU Smoke Test Passed` với mã thoát 0.
-- **Mục đích:** Xác nhận GPU NVIDIA khả dụng, PyTorch 2.6.0+cu124, PyG 2.6.1 và cờ tái lập `CUBLAS_WORKSPACE_CONFIG` hoạt động đúng.
-
----
-
-### Lệnh 2: Thẩm định tính toàn vẹn của Bảng chỉ mục Thực nghiệm
 ```powershell
 python scripts/validate_experiment_index.py
+python scripts/verify_reported_results.py
+python -m pytest tests -q
 ```
-- **Thời gian chạy:** ~2 giây trên máy thử nghiệm.
-- **Kỳ vọng:** In ra:
-  ```text
-  [VALIDATOR-PASS] records in experiment_index.csv match source JSON artifacts
-  [VALIDATOR-PASS] artifacts in ARTIFACT-MANIFEST.json verified
-  ```
-- **Mục đích:** Đối soát từng dòng trong `experiments/experiment_index.csv` (18 cột) với các tệp JSON nguồn, bảo đảm không có hiện tượng trộn lẫn chỉ số giữa đầu dò nội bộ và đầu dò V3 chuẩn hóa.
 
----
+Ngày 02-10-2026: chỉ mục thực nghiệm PASS (9 dòng và 10 artifact trong manifest); 31 bài kiểm thử PASS. Lệnh `verify_reported_results.py` đối chiếu các giá trị đã đưa vào slide/tài liệu bảo vệ với JSON kết quả và manifest, **không** huấn luyện mô hình hay đọc tập Test. Nếu một artifact cục bộ thiếu, validator sẽ báo thiếu; không ghi PASS thay.
 
-### Lệnh 3: Tái lập chỉ số Đánh giá Hạ nguồn V3 trên Validation set
+## 3. Chọn đúng môi trường CUDA
+
+Python mặc định hiện là `C:\Users\Acer\AppData\Local\Programs\Python\Python312\python.exe`, PyTorch 2.13.0+cpu. Đây không phải môi trường huấn luyện của chuyên đề. Môi trường đã dùng cho Stage A2 nằm ở `D:\Research\.venv-stage-a2-cuda\Scripts\python.exe` trên **máy này**; đường dẫn đó không thuộc repo Git và không tồn tại trên bản clone khác.
+
 ```powershell
-$env:CUBLAS_WORKSPACE_CONFIG=":4096:8"
-python scripts/evaluate_nineplus_v3.py --architecture SEQUENCE_ONLY --seed 42
+$env:CUBLAS_WORKSPACE_CONFIG = ':4096:8'
+& 'D:\Research\.venv-stage-a2-cuda\Scripts\python.exe' scripts/gpu_smoke_test.py
 ```
-- **Thời gian chạy:** ~15 giây trên máy thử nghiệm (RTX 3050 Ti Laptop GPU).
-- **Tiến trình tự động:**
-  1. Kiểm tra 4 bất biến mật mã phân chia nhân quả (Train Membership SHA: `65b76694b0a3...`, Val Membership SHA: `14cf689f9682...`, Ordered Train/Val SHA) → PASS.
-  2. Xác nhận trạng thái tập Test (`TEST_OPENED=false`, `TEST_READ_COUNT=0`).
-  3. Trích xuất đặc trưng 35.000 phiên Train và 7.500 phiên Validation.
-  4. Huấn luyện Frozen Linear Probe V3 trong 50 epochs (Seed 10007, AdamW).
-  5. In ra kết quả đánh giá hạ nguồn trên Validation set:
-     ```text
-     >>> V3 PROBE RESULT: AP=1.0000 | ROC-AUC=1.0000 | Var(z)=0.004535 | Steps=6850
-     >>> Result written to experiments/nineplus/evaluation_v3/.../V3-PROBE-RESULT.json
-     ```
-- **Lưu ý:** Kết quả AP=1.0000 và ROC-AUC=1.0000 là trên tập **Validation** (7.500 phiên). Tập Test chưa được đánh giá trong phạm vi chuyên đề.
-- **Mã thoát:** `0`.
 
----
+Kiểm tra này đã PASS ngày 02-10-2026 với PyTorch 2.6.0+cu124 và CUDA khả dụng. Nó chỉ kiểm tra môi trường, không tái huấn luyện. Máy khác cần tạo môi trường theo `requirements-lock.txt`, có NVIDIA GPU/CUDA tương thích, rồi nạp artifact.
 
-## 5. ĐỐI SOÁT VỚI BẢN THẢO CHUYÊN ĐỀ CHÍNH THỨC
+## 4. Artifact cần cho đánh giá V3
 
-Sau khi chạy xong, Thầy/Cô có thể mở bản thảo [`Chuyên đề chuyên sâu.pdf`](Chuyên%20đề%20chuyên%20sâu.pdf) (120 trang) để đối chiếu trực tiếp:
+`experiments/nineplus/ARTIFACT-MANIFEST.json` kiểm kê 10 tệp; bảy tệp dữ liệu/cache/nhãn/checkpoint lớn chỉ lưu cục bộ. Raw archive HDFS cũng không nằm trong Git. Repo có script nạp artifact bằng mã băm:
 
-1. **Mục 3.2.4 "Kiểm chứng tái lập trên máy trạm" (Trang 85–88):**
-   - **Bảng 3.7b:** Đối chiếu các chỉ số hội tụ của đợt huấn luyện xác nhận: `best_epoch = 3`, `best_val_loss = 0.009218`, dừng sớm tại `Epoch 6` với `patience = 3`, VRAM đỉnh `170.4 MB`.
-   - **Hình 3.1:** Ảnh chụp console thực tế thể hiện quá trình tối ưu hóa qua các epochs và lưu vết checkpoint.
-2. **Bảng 3.7 "Hiệu năng phát hiện bất thường qua các cấu hình kiến trúc":**
-   - Hàng cấu hình `SEQUENCE_ONLY` (Seed 42): AP = 1.0000 và ROC-AUC = 1.0000 trên Validation.
-3. **Bằng chứng thực nghiệm đã lưu trữ:**
-   - Xem kết quả đánh giá tại [`evidence/V3-PROBE-RESULT.json`](evidence/V3-PROBE-RESULT.json).
-   - Xem tóm tắt phiên chạy huấn luyện tại [`evidence/MANUAL_RUN_SUMMARY.txt`](evidence/MANUAL_RUN_SUMMARY.txt).
-   - Xem ảnh chụp màn hình console tại [`evidence/03_training_epochs_loss.png`](evidence/03_training_epochs_loss.png).
+```powershell
+python scripts/provision_cleanroom_artifacts.py <thu_muc_chua_artifact>
+python scripts/validate_experiment_index.py
+```
 
----
+Hiện `clean_clone_ready=false`: một bản clone sạch không tự chạy được V3 nếu chưa nạp đúng các tệp. Không copy đại một checkpoint khác seed hoặc khác commit để “chạy cho được”.
 
-## 6. TUYÊN BỐ VỀ TÍNH SẴN SÀNG CÔNG KHAI
+## 5. Đánh giá lại một mô hình V3 khi đã đủ điều kiện
 
-- **Trạng thái hiện tại:** `PUBLIC_CLEAN_CLONE_READY = false`.
-- **Lý do kỹ thuật:** 7 artifact ngoại vi (tổng dung lượng 108.856.472 bytes) chưa được phát hành trên kho lưu trữ công khai (Zenodo/OSF). Một bản clone Git sạch từ Internet sẽ cần bước nạp artifact cục bộ như hướng dẫn ở Mục 3.
-- **Ghi chú về tính xác định:** Toàn bộ thuật toán, mã nguồn và kịch bản đối soát sử dụng seed cố định và cờ `CUBLAS_WORKSPACE_CONFIG` để tái lập được kết quả trên cấu hình phần cứng tương đương. Kết quả có thể có sai số nhỏ trên phần cứng hoặc phiên bản CUDA khác.
+Trước khi chạy, sao lưu `experiments/nineplus/evaluation_v3/` vì kịch bản có thể ghi lại JSON kết quả và thời gian chạy. Sau đó:
+
+```powershell
+$env:CUBLAS_WORKSPACE_CONFIG = ':4096:8'
+& 'D:\Research\.venv-stage-a2-cuda\Scripts\python.exe' scripts/evaluate_nineplus_v3.py --architecture SEQUENCE_ONLY --seed 42
+```
+
+Kịch bản đóng băng backbone, fit probe trên 35.000 phiên Train và đánh giá trên 7.500 phiên Validation; nó không đánh giá Test. Điểm lịch sử trong Word/JSON là AP=1,0000 và ROC-AUC=1,0000 cho Sequence seed 42. Đợt chuẩn bị bảo vệ ngày 02-10-2026 **không chạy lại V3**, nên không tuyên bố kết quả hiện tại là một lần tái lập mới.
+
+## 6. Trả lời khi được yêu cầu chỉ chứng cứ
+
+- **Phân chia chống rò rỉ:** Word Bảng 3.2; `datasets/manifests/SPL-HDFS-001.json`; `src/research_agent/experiments/data/hdfs_split_authority.py`.
+- **Huấn luyện và loss Stage A2:** Word Bảng 3.3–3.4; `src/research_agent/experiments/training/stage_a2_trainer.py`; manifest từng run trong `experiments/nineplus/confirmatory/`.
+- **V3 và H2:** Word Bảng 3.6–3.7, 3.10; `V3_SIX_BACKBONE_EVALUATION_SUMMARY.json`, `H2_SEQUENCE_NOPARAM_SENSITIVITY.json`.
+- **H1:** Word Bảng 3.9; `h1_ablation/H1_FROZEN_MASKING_ABLATION_SUMMARY.json`.
+- **Lượt chạy thủ công:** Word Bảng 3.8; `evidence/MANUAL_RUN_SUMMARY.txt`, `evidence/03_training_epochs_loss.png`.
+
+Không dùng giá trị Graph-Only theo probe nội bộ để xếp hạng trực tiếp với V3. Không dùng loss tự giám sát thay AP. Không gọi AP trên Validation là kết quả Test. Khi hội đồng hỏi về giới hạn, mở Kết luận Chương 3 thay vì suy đoán.

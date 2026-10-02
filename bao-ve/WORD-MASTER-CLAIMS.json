@@ -1,0 +1,32 @@
+{
+  "source_docx_sha256": "2425ffb1b8c109a410a93a30e76c99251d234fa20ab33efbb9922bdc44f0e92f",
+  "source_sections": ["Bảng 3.2", "Bảng 3.6", "Bảng 3.7", "Bảng 3.9", "Bảng 3.10"],
+  "data": {
+    "raw_log_records": 11175629,
+    "raw_block_sessions": 575061,
+    "train_sessions": 35000,
+    "validation_sessions": 7500,
+    "test_opened": false,
+    "test_reads": 0
+  },
+  "v3": {
+    "sequence_ap_by_seed": {"42": 1.0, "7": 1.0, "999": 1.0},
+    "multi_view_ap_by_seed": {"42": 0.7604, "7": 0.6309, "999": 0.5911},
+    "multi_view_roc_auc_by_seed": {"42": 0.9946, "7": 0.8081, "999": 0.7693},
+    "multi_view_mean_ap": 0.6608,
+    "multi_view_sample_sd_ap": 0.0885,
+    "multi_view_mean_roc_auc": 0.8573
+  },
+  "h2": {
+    "delta_ap_by_seed": {"42": -0.2396, "7": -0.3691, "999": -0.4089},
+    "mean_delta_ap": -0.3392,
+    "sample_sd_delta_ap": 0.0885,
+    "non_inferiority_margin_ap": -0.02,
+    "sequence_no_parameter_ap_by_seed": {"42": 1.0, "7": 1.0, "999": 1.0}
+  },
+  "h1": {
+    "mean_cosine_by_seed": {"42": 0.9581, "7": 0.8201, "999": 0.9546},
+    "mean_l2_by_seed": {"42": 3.2742, "7": 6.7778, "999": 3.4056},
+    "ap_with_and_without_parameters": 1.0
+  }
+}

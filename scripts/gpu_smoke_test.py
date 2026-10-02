@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-GPU and Runtime Smoke Test
-Xác minh runtime PyTorch CUDA, PyTorch Geometric và các thao tác tensor CPU/GPU quy mô nhỏ
-đối chiếu nghiêm ngặt với experiments/environment/ENVIRONMENT-LOCK.json.
+Kiểm tra môi trường GPU và các phép toán tensor CPU/GPU quy mô nhỏ.
+Đối chiếu phiên bản với khóa môi trường của chiến dịch Stage A2.
 KHÔNG HUẤN LUYỆN MÔ HÌNH, KHÔNG BENCHMARK, KHÔNG TRUY CẬP TẬP DỮ LIỆU.
 CHỐT CHẶN PASS/FAIL NGHIÊM NGẶT: Thoát với mã lỗi khác 0 nếu BẤT KỲ kiểm tra nào thất bại.
 """
@@ -27,17 +26,17 @@ def run_smoke_test() -> bool:
     checks = []
 
     # Tải khóa môi trường
-    lock_file = REPO_ROOT / "experiments" / "environment" / "ENVIRONMENT-LOCK.json"
+    lock_file = REPO_ROOT / "evidence" / "stage-a2" / "preexecution" / "STAGE-A2-LOCAL-EXECUTION-ENVIRONMENT-V1.5.json"
     lock_data = {}
     if lock_file.exists():
         try:
             with open(lock_file, "r", encoding="utf-8") as f:
                 lock_data = json.load(f)
         except Exception as e:
-            print(f"[WARN] Could not parse ENVIRONMENT-LOCK.json: {e}")
+            print(f"[WARN] Không đọc được khóa môi trường Stage A2: {e}")
 
-    expected_torch = lock_data.get("runtime_stack", {}).get("pytorch_version", "2.6.0+cu124")
-    expected_pyg = lock_data.get("runtime_stack", {}).get("pyg_version", "2.6.1")
+    expected_torch = lock_data.get("pytorch_version", "2.6.0+cu124")
+    expected_pyg = "2.6.1"
 
     # Kiểm tra 1: CUBLAS_WORKSPACE_CONFIG
     cublas_cfg = os.environ.get("CUBLAS_WORKSPACE_CONFIG", "NOT_SET")
@@ -103,23 +102,6 @@ def run_smoke_test() -> bool:
         except Exception as e:
             checks.append((f"Dep: {pkg_name}", "Installed", f"ERROR: {e}", "FAIL"))
 
-    # Kiểm tra 5b: DOCUMENT_QA_OPTIONAL (Không chặn / chỉ cung cấp thông tin)
-    optional_deps = [
-        ("pandas", "pandas"),
-        ("python-docx", "docx"),
-        ("pypdfium2", "pypdfium2"),
-        ("pywin32", "win32api")
-    ]
-    for pkg_name, mod_name in optional_deps:
-        try:
-            mod = __import__(mod_name)
-            ver = getattr(mod, "__version__", "INSTALLED")
-            checks.append((f"Opt: {pkg_name}", "Optional (DocQA)", ver, "OPTIONAL"))
-        except ImportError:
-            checks.append((f"Opt: {pkg_name}", "Optional (DocQA)", "NOT_INSTALLED", "OPTIONAL"))
-        except Exception as e:
-            checks.append((f"Opt: {pkg_name}", "Optional (DocQA)", f"ERROR: {e}", "OPTIONAL"))
-
     # Kiểm tra 6: Truyền Tenx GPU và Nhân ma trận (Nghiêm ngặt 1024x1024)
     if cuda_avail and torch is not None:
         try:
@@ -162,7 +144,7 @@ def run_smoke_test() -> bool:
         print("=" * 75)
         return True
     else:
-        failed_count = sum(1 for c in checks if c[3] != "PASS")
+        failed_count = sum(1 for c in checks if c[3] == "FAIL")
         print("=" * 75)
         print(f"[FAIL] GPU Smoke Test FAILED ({failed_count} condition(s) unmet).")
         print("=" * 75)

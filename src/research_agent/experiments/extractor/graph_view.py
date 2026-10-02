@@ -186,7 +186,7 @@ class TemporalGraphViewExtractor(nn.Module):
         )
 
         # ---------------------------------------------------------------------
-        # THREE ANTI-LEAKAGE GRAPH SSL HEADS
+# Ba đầu tự giám sát đồ thị có kiểm soát rò rỉ
         # ---------------------------------------------------------------------
         # 1. L_mask_node: Đầu tái tạo x_v^priv liên tục
         self.ssl_mask_node_head = nn.Sequential(
@@ -355,7 +355,7 @@ class TemporalGraphViewExtractor(nn.Module):
         z_graph = self.readout_proj(pooled_state)
 
         # ---------------------------------------------------------------------
-        # COMPUTE GRAPH SSL LOSSES
+# Tính các thành phần mất mát tự giám sát đồ thị
         # ---------------------------------------------------------------------
         ssl_losses = {}
         all_msg_tensor = torch.stack(all_messages, dim=0)
