@@ -52,7 +52,7 @@ $env:CUBLAS_WORKSPACE_CONFIG = ':4096:8'
 & 'D:\Research\.venv-stage-a2-cuda\Scripts\python.exe' scripts/evaluate_nineplus_v3.py --architecture SEQUENCE_ONLY --seed 42
 ```
 
-Kịch bản đóng băng backbone, fit probe trên 35.000 phiên Train và đánh giá trên 7.500 phiên Validation; nó không đánh giá Test. Điểm lịch sử trong Word/JSON là AP=1,0000 và ROC-AUC=1,0000 cho Sequence seed 42. Đợt chuẩn bị bảo vệ ngày 02-10-2026 **không chạy lại V3**, nên không tuyên bố kết quả hiện tại là một lần tái lập mới.
+Kịch bản đóng băng backbone, fit probe trên 35.000 phiên Train và đánh giá trên 7.500 phiên Validation; nó không đánh giá Test. Điểm lịch sử trong Word/JSON là AP=1,0000 và ROC-AUC=1,0000 cho Sequence seed 42. Ngày 02-10-2026 đã chạy thêm một lần với `--force-extract`, trích xuất lại vector và thu được cùng hai chỉ số; xem [biên nhận kiểm chứng](bao-ve/V3-SEED42-RERUN-20261002.md). Năm backbone khác và Stage A2 không được chạy lại trong đợt này.
 
 ## 6. Trả lời khi được yêu cầu chỉ chứng cứ
 

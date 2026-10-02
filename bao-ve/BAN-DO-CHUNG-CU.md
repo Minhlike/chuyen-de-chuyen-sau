@@ -30,4 +30,4 @@ Mở `D:\chuyen-de-chuyen-sau` trong VS Code. Bản Word master là nguồn di�
 - `python scripts/validate_experiment_index.py`: 9 dòng chỉ mục và 10 artifact trong manifest được đối soát PASS trên máy hiện tại.
 - Python mặc định `C:\Users\Acer\AppData\Local\Programs\Python\Python312\python.exe` dùng PyTorch CPU 2.13.0; kiểm tra GPU thất bại đúng thiết kế.
 - `D:\Research\.venv-stage-a2-cuda\Scripts\python.exe` dùng PyTorch 2.6.0+cu124 và GPU khả dụng; kiểm tra GPU PASS khi đặt biến môi trường đúng.
-- Các kết quả V3 lịch sử được đối chiếu bằng JSON; trong đợt chuẩn bị bảo vệ này **không chạy lại sáu backbone** và không tạo số liệu thực nghiệm mới.
+- Đã chạy lại trực tiếp V3 cho **Sequence seed 42** với `--force-extract`: trích xuất lại `[35000,128]` và `[7500,128]`, AP=1,0000, ROC-AUC=1,0000, 6.850 bước probe. Xem `V3-SEED42-RERUN-20261002.md`. Chưa chạy lại năm backbone còn lại hoặc huấn luyện lại Stage A2.
