@@ -22,6 +22,7 @@ htmlcov/
 *.swo
 *~
 ~$*.docx
+~$*.pptx
 Thumbs.db
 desktop.ini
 
