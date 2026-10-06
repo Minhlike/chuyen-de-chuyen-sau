@@ -20,7 +20,7 @@ Từ câu hỏi vừa rồi, em đặt ra Hợp đồng Biểu diễn. Có thể
 
 Đến đây em muốn nói rõ một điểm. Ba nhóm ấy là **điều kiện cần đem ra kiểm tra**, chứ không phải lời khẳng định rằng mô hình của em đã đạt cả ba. Chẳng hạn, muốn nói vector giữ được ý nghĩa của tham số, mình phải đo đúng ở cấp tham số. Một điểm AP phát hiện bất thường ở cấp phiên, dù cao, cũng chưa trả lời được câu hỏi đó.
 
-Vì vậy, khi đánh giá, em tách bộ tạo vector ra khỏi bộ phân loại. Em đóng băng trọng số bộ tạo vector, rồi chỉ huấn luyện một đầu dò tuyến tính trên các vector đã có. Nếu đầu dò làm tốt, ta biết thông tin hữu ích có thể đọc ra theo cách tuyến tính. Còn những thông tin phi tuyến khác có hay không, phép đo này tự nó chưa kết luận được. Cách tách ấy cũng giúp em nói đúng phạm vi của mỗi kết quả ở các slide sau.
+Vì vậy, khi đánh giá, em tách bộ tạo vector ra khỏi bộ phân loại. Em dùng checkpoint đã huấn luyện để trích xuất vector mà không cập nhật tham số bộ tạo vector; phần được huấn luyện ở bước này chỉ là đầu dò tuyến tính trên vector Train. Nếu đầu dò làm tốt, ta biết thông tin hữu ích có thể đọc ra theo cách tuyến tính. Còn những thông tin phi tuyến khác có hay không, phép đo này tự nó chưa kết luận được. Cách tách ấy cũng giúp em nói đúng phạm vi của mỗi kết quả ở các slide sau.
 
 ## Slide 4 — Vì sao thử kết hợp chuỗi và đồ thị (4:00–5:30)
 
@@ -44,7 +44,7 @@ Sang phần huấn luyện, Stage A2 cho mô hình học từ ba bài tập: d�
 
 Em có báo cáo năm lượt chạy với các seed khác nhau. Nhìn vào cột loss, ta biết mỗi lượt tối ưu bài tập tự giám sát đến đâu. Nhưng khi rà lại hồ sơ chạy, cả năm lượt đều có ít nhất một điểm chưa khớp trọn vẹn với giao thức chuẩn đã khóa: có lượt dùng lịch học cũ, có lượt dừng sớm, có lượt thiếu hồ sơ hoặc mốc commit không đúng kế hoạch. Điều này không có nghĩa là phải bỏ hết số liệu. Nó có nghĩa là em phải ghi đúng hoàn cảnh của từng lượt, không gom chúng thành năm phép lặp hoàn toàn tương đương rồi rút ra một kết luận quá tay.
 
-Thêm một việc nữa: loss thấp chỉ cho thấy mô hình làm tốt các bài tập tự giám sát ấy. Nó chưa chứng minh vector giúp phát hiện bất thường tốt hơn. Muốn biết điều đó, em lấy các backbone đã đóng băng, trích xuất vector và kiểm tra bằng đầu dò tuyến tính. Kết quả của phép kiểm tra này là phần tiếp theo.
+Thêm một việc nữa: loss thấp chỉ cho thấy mô hình làm tốt các bài tập tự giám sát ấy. Nó chưa chứng minh vector giúp phát hiện bất thường tốt hơn. Muốn biết điều đó, em dùng các checkpoint đã huấn luyện để trích xuất vector, không cập nhật backbone trong bước đánh giá, rồi kiểm tra bằng đầu dò tuyến tính. Kết quả của phép kiểm tra này là phần tiếp theo.
 
 ## Slide 7 — Kết quả V3 và cách đọc AP bằng một (8:20–9:45)
 
@@ -72,7 +72,7 @@ Em cũng đưa lên slide lượt chạy lại thủ công của Sequence seed 4
 
 ## Slide 10 — Đóng góp, kết quả âm tính và việc cần làm tiếp (13:20–15:00)
 
-Đến đây em xin chốt lại chuyên đề đóng góp gì và bằng chứng hiện có đi được đến đâu. Phần thứ nhất là Hợp đồng Biểu diễn: đặt ra những tiêu chí cụ thể để kiểm tra một vector log. Phần thứ hai là thiết kế kết hợp chuỗi với đồ thị theo thời gian. Em dùng các khối như Transformer và VICReg trong thiết kế, chứ không nhận đó là thuật toán do mình phát minh. Phần thứ ba là quy trình thực nghiệm có thể đối soát: từ cách chia dữ liệu, đầu dò với backbone đóng băng, đến việc ghi lại cả sai lệch thủ tục lẫn kết quả không thuận với giả thuyết.
+Đến đây em xin chốt lại chuyên đề đóng góp gì và bằng chứng hiện có đi được đến đâu. Phần thứ nhất là Hợp đồng Biểu diễn: đặt ra những tiêu chí cụ thể để kiểm tra một vector log. Phần thứ hai là thiết kế kết hợp chuỗi với đồ thị theo thời gian. Em dùng các khối như Transformer và VICReg trong thiết kế, chứ không nhận đó là thuật toán do mình phát minh. Phần thứ ba là quy trình thực nghiệm có thể đối soát: từ cách chia dữ liệu, đánh giá đầu dò mà không cập nhật backbone, đến việc ghi lại cả sai lệch thủ tục lẫn kết quả không thuận với giả thuyết.
 
 Nếu tách từng giả thuyết ra thì bức tranh hiện nay khá rõ. H1 chưa được kiểm tra trực tiếp ở đúng cấp tham số. H2 không được hỗ trợ trên HDFS Validation. H3 đến H5 chưa có thực nghiệm xác nhận. Với ER1, em mới có quan sát về bộ nhớ, chưa có số đo thông lượng và độ trễ. Graph-Only xác nhận mới chưa được huấn luyện theo V3, và tập Test vẫn niêm phong.
 
