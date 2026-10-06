@@ -26,7 +26,7 @@ Chuỗi giúp nhìn diễn biến, đồ thị giúp nhìn phụ thuộc giữa 
 
 ## Slide 5 — Dữ liệu và phép chia (3:15–4:30)
 
-Trước khi nói đến điểm AP, em xin chỉ nguồn của các con số. Ngữ liệu HDFS gốc có 11.175.629 dòng log, gom thành 575.061 phiên khối có nhãn. Đây là quy mô **toàn ngữ liệu**. Phép thử V3 dùng một tập con theo ngân sách: 35.000 phiên Train và 7.500 phiên Validation; không được lấy 11 triệu dòng để gọi là số mẫu huấn luyện của đầu dò.
+Trước khi xem điểm đánh giá, em xin chỉ nguồn của các con số. Ngữ liệu HDFS gốc có 11.175.629 dòng log, gom thành 575.061 phiên khối có nhãn. Đây là quy mô **toàn ngữ liệu**. Phép thử V3 dùng một tập con theo ngân sách: 35.000 phiên Train và 7.500 phiên Validation; không được lấy 11 triệu dòng để gọi là số mẫu huấn luyện của đầu dò.
 
 Trong mã và manifest, phiên được xếp theo thời điểm bắt đầu. Những phiên bắc qua ranh giới Train–Validation hoặc Validation–Test bị loại, rồi mới chọn tập con. Từ vựng được khớp trên Train. Các tệp `SPL-HDFS-001.json` và `SUBSET-MANIFEST-HDFS.json` ghi số lượng, thời gian và mã băm của phép chia; mã thực hiện nằm ở `hdfs_split_authority.py`. Khi cô hỏi có thể mở đúng ba tệp ấy để đối chiếu.
 
@@ -34,7 +34,7 @@ Manifest ghi Test ở trạng thái `SEALED`, chưa vật hóa đặc trưng Tes
 
 ## Slide 6 — Stage A2: công thức và mã huấn luyện (4:30–6:35)
 
-Bây giờ đến phần mã huấn luyện. Trên slide là công thức đang dùng cho mất mát đồ thị Stage A2: **L_graph bằng L_rel cộng L_node cộng 0,1 lần L_time**. Ba số hạng lần lượt là sai số dự đoán quan hệ bị che, tái tạo thuộc tính nút bị che và dự đoán khoảng thời gian. Trước khi cộng, mã chia tổng sai số từng loại cho số mục tiêu hợp lệ của loại ấy. Thành ra hệ số 0,1 là trọng số trong mục tiêu tối ưu; không thể đọc nó thành “thời gian chỉ đóng góp 10% vào AP”.
+Bây giờ đến phần mã huấn luyện. Trên slide là công thức đang dùng cho mất mát đồ thị Stage A2: **L_graph bằng L_rel cộng L_node cộng 0,1 lần L_time**. Ba số hạng lần lượt là sai số dự đoán quan hệ bị che, tái tạo thuộc tính nút bị che và dự đoán khoảng thời gian. Trước khi cộng, mã chia tổng sai số từng loại cho số mục tiêu hợp lệ của loại ấy. Thành ra hệ số 0,1 là trọng số trong mục tiêu tối ưu; không thể đọc nó thành “thời gian chỉ đóng góp 10% vào kết quả phát hiện”.
 
 Ngay dưới công thức là đoạn từ `stage_a2_trainer.py`, khoảng dòng 261 đến 286: mã tạo `L_graph_group`, gọi `backward()`, kiểm tra gradient, chặn chuẩn gradient nếu cấu hình bật, rồi `optimizer.step()`. Nếu cô hỏi mô hình thực sự học ở đâu, em mở đoạn này và runner `run_nineplus_confirmatory.py`, thay vì chỉ trỏ vào sơ đồ trong Word.
 
@@ -44,7 +44,7 @@ Bảng bên phải là năm lượt chạy Stage A2 được chuyên đề báo 
 
 Slide này là trọng tâm của phép so. Em lấy sáu checkpoint đã huấn luyện: Sequence-Only và Multi-View, mỗi nhánh ba seed 42, 7, 999. Với từng checkpoint, mã gọi `model.eval()` và trích xuất trong `torch.no_grad()`. Nó tạo ma trận vector Train kích thước 35.000 nhân 128, và Validation 7.500 nhân 128. Hai ma trận này là đầu vào của một lớp tuyến tính `nn.Linear(128,1)`.
 
-Chỗ cần chỉ thật rõ trong mã là `optimizer = AdamW(probe.parameters())`. Bộ tối ưu chỉ nhận tham số của đầu dò, rồi vòng lặp 50 epoch gọi `loss.backward()` và `optimizer.step()` cho đầu dò ấy. Tệp kết quả ghi số bước tối ưu của backbone bằng không. Đây là căn cứ để em nói bộ tạo vector **không được cập nhật trong bước V3**; em không viện ra một dòng `requires_grad_(False)` vì mã không có dòng đó. Điểm đầu dò về mặt toán học là sigmoid của `w` chuyển vị nhân `z` cộng `b`. Sau khi fit trên nhãn Train, mã lấy điểm trên toàn bộ Validation để tính AP và ROC-AUC.
+Chỗ cần chỉ thật rõ trong mã là `optimizer = AdamW(probe.parameters())`. Bộ tối ưu chỉ nhận tham số của đầu dò, rồi vòng lặp 50 epoch gọi `loss.backward()` và `optimizer.step()` cho đầu dò ấy. Tệp kết quả ghi số bước tối ưu của backbone bằng không. Đây là căn cứ để em nói bộ tạo vector **không được cập nhật trong bước V3**; em không viện ra một dòng `requires_grad_(False)` vì mã không có dòng đó. Điểm đầu dò là sigmoid của `w` chuyển vị nhân `z` cộng `b`. Sau khi học trên Train, mã chấm điểm toàn bộ Validation. **AP là Average Precision, tức độ chính xác trung bình**: khi xếp các phiên theo điểm, các phiên thật sự bất thường càng ở phía đầu danh sách thì AP càng cao. Nó không phải tỷ lệ dự đoán đúng của toàn bộ phiên. Còn ROC-AUC là diện tích dưới đường ROC, đo khả năng phân biệt hai lớp khi thay đổi ngưỡng.
 
 Giờ ta đọc bảng sáu hàng. Ba seed Sequence đều có AP và ROC-AUC là 1,0000. Ba AP của Multi-View là 0,7604; 0,6309; 0,5911, với ROC-AUC tương ứng 0,9946; 0,8081; 0,7693. AP trung bình Multi-View là 0,6608, độ lệch chuẩn mẫu 0,0885. Cột Var(z) chỉ là độ phân tán trung bình của biểu diễn ẩn; từ một giá trị dương nhỏ không thể tự suy rằng mô hình tránh được sụp đổ biểu diễn theo mọi tiêu chí.
 

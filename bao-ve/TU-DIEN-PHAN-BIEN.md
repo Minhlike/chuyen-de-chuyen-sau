@@ -106,7 +106,7 @@ Nếu khác dữ liệu fit, seed probe, số epoch, cách chuẩn hóa hoặc p
 
 ### 25. AP và ROC-AUC khác gì?
 
-AP tóm tắt chất lượng xếp hạng lớp dương theo precision–recall, thường hữu ích khi lớp dương hiếm. ROC-AUC đo khả năng phân biệt hai lớp trên các ngưỡng. Cả hai là chỉ số đánh giá theo nhãn hiện có; không cho biết nguyên nhân, không tự bảo đảm vận hành tốt ở một ngưỡng cảnh báo cụ thể.
+AP là **Average Precision**, tức độ chính xác trung bình. Về cách tính, nó lấy trung bình precision theo những mức tăng recall trên đường precision–recall; không phải accuracy, tức tỷ lệ đoán đúng chung. AP thường hữu ích khi lớp dương hiếm. ROC-AUC là diện tích dưới đường ROC, đo khả năng phân biệt hai lớp trên nhiều ngưỡng. Cả hai dựa trên nhãn hiện có; chúng không chỉ ra nguyên nhân và không bảo đảm vận hành tốt ở một ngưỡng cảnh báo cụ thể.
 
 ### 26. AP bằng 1 có đáng nghi không?
 
