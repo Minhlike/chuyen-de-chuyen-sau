@@ -1,6 +1,6 @@
 # Kịch bản trình diễn trong VS Code (khoảng 5 phút)
 
-Mở thư mục `D:\chuyen-de-chuyen-sau` bằng VS Code. Giữ sẵn `bao-ve/Bao-cao-chuyen-de-10-slide-v4.pptx` và Word master ngoài VS Code; buổi trình diễn mã nguồn chỉ cần chứng minh đường đi **dữ liệu → mô hình → đầu dò → kết quả → giới hạn**. Không chạy lại sáu lượt `--force-extract` trước hội đồng: các lượt Multi-View đã mất nhiều phút và có thể ghi lại artifact.
+Mở thư mục `D:\chuyen-de-chuyen-sau` bằng VS Code. Giữ sẵn `bao-ve/Bao-cao-chuyen-de-10-slide-v4.pptx` và Word master ngoài VS Code. Các slide 5–10 đã có bảng số và địa chỉ tệp; phần mở mã chỉ cần chứng minh đường đi **dữ liệu → hàm mất mát → đầu dò → kết quả → giới hạn**. Không chạy lại sáu lượt `--force-extract` trước hội đồng: các lượt Multi-View đã mất nhiều phút và có thể ghi lại artifact.
 
 ## 1. Trước giờ báo cáo
 
@@ -25,10 +25,10 @@ Nếu một lệnh không PASS, dừng phần trình diễn đó và nói đúng
 ## 2. Các tab nên ghim sẵn
 
 1. `datasets/manifests/SPL-HDFS-001.json`: giao thức chia theo thời gian và số bản ghi/phiên toàn ngữ liệu. Mở tiếp `datasets/manifests/SUBSET-MANIFEST-HDFS.json` để chỉ đúng ngân sách chọn 35.000 Train, 7.500 Validation, ranh giới thời gian và trạng thái Test `SEALED`. Mã phân chia: `src/research_agent/experiments/data/hdfs_split_authority.py`.
-2. `src/research_agent/experiments/extractor/sequence_view.py`, `src/research_agent/experiments/models/temporal_graph_view_encoder.py`, `src/research_agent/experiments/extractor/multi_view.py`: chỉ đường đi từ chuỗi log sang vector; mở sâu một nhánh đúng câu hỏi của cô, không cuộn cả ba tệp.
-3. `scripts/evaluate_nineplus_v3.py`: chỉ cấu hình sáu checkpoint (cuối tệp), biểu diễn Train/Validation `[35000,128]`/`[7500,128]`, seed đầu dò `10007`, 50 epoch; backbone ở chế độ đánh giá, chỉ đầu dò được fit. Nói rõ đây là **đánh giá lại checkpoint**, không phải huấn luyện lại Stage A2.
+2. `src/research_agent/experiments/training/stage_a2_trainer.py`: mở dòng 261–286 để thấy từng loss được chia cho số mục tiêu hợp lệ, tổng `1,0 / 1,0 / 0,1`, rồi `backward()` và `self.optimizer.step()` khi huấn luyện. Runner là `scripts/run_nineplus_confirmatory.py`. Với Multi-View, `src/research_agent/experiments/extractor/multi_view.py` dòng 329–340 tính VICReg trong đường huấn luyện; dòng 215–249 cho thấy đường trích xuất dùng `self.fusion(z_seq, z_graph_batch)`.
+3. `scripts/evaluate_nineplus_v3.py`: mở dòng 187–191 hoặc 247–251 để thấy `model.eval()` và `torch.no_grad()` khi trích xuất; dòng 277–279 xác nhận kích thước `[35000,128]`/`[7500,128]`; dòng 306–327 cho thấy `nn.Linear(128,1)`, `AdamW(probe.parameters())` và bước cập nhật đầu dò. Mã **không có** lệnh `requires_grad_(False)` cho backbone; phát biểu chính xác là backbone không có bước cập nhật trong V3. Seed đầu dò `10007`, 50 epoch. Đây là **đánh giá lại checkpoint**, không phải huấn luyện lại Stage A2.
 4. `experiments/nineplus/evaluation_v3/V3_SIX_BACKBONE_EVALUATION_SUMMARY.json` cùng Bảng 3.6 trong Word: đối chiếu AP/ROC-AUC của sáu hàng ở bốn chữ số thập phân. Biên nhận chạy trực tiếp: `bao-ve/V3-ALL-BACKBONES-RERUN-20261003.md`; log đầy đủ nằm ngoài Git tại `C:\Users\Acer\Downloads\ChuyenDe-backup-truoc-bao-ve-20261002\`.
-5. `experiments/nineplus/evaluation_v3/H2_SEQUENCE_NOPARAM_SENSITIVITY.json` cùng Bảng 3.7/3.10: ba chênh lệch AP Multi-View trừ Sequence đều âm (`−0,2396`, `−0,3691`, `−0,4089`) và đều thấp hơn biên `−0,02`.
+5. `experiments/nineplus/evaluation_v3/H2_SEQUENCE_NOPARAM_SENSITIVITY.json` cùng Bảng 3.7/3.10: ba chênh lệch AP Multi-View trừ Sequence đều âm (`−0,2396`, `−0,3691`, `−0,4089`) và đều thấp hơn biên `−0,02`. Nếu hỏi H1, mở `experiments/nineplus/evaluation_v3/h1_ablation/H1_FROZEN_MASKING_ABLATION_SUMMARY.json` cùng Bảng 3.9: vector thay đổi khi che tham số, còn AP cấp phiên không đổi.
 
 ## 3. Nếu được yêu cầu xem dữ liệu gốc
 

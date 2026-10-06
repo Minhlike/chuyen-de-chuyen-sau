@@ -11,10 +11,10 @@ Mở `D:\chuyen-de-chuyen-sau` trong VS Code. Bản Word master là nguồn di�
 | Cấu trúc đồ thị | Mục 2.2–2.4 | `src/research_agent/experiments/models/temporal_graph_view_encoder.py`, `src/research_agent/experiments/extractor/graph_view.py` | Thông điệp, thời gian, trạng thái; chi phí toàn trình chưa đo. |
 | Multi-View/VICReg | Mục 2.4 | `src/research_agent/experiments/extractor/multi_view.py` | Thiết kế gióng hàng và dung hợp, không phải bằng chứng thắng Sequence. |
 | Stage A2 | Mục 3.1.3, Bảng 3.3–3.4 | `src/research_agent/experiments/training/stage_a2_trainer.py`, `scripts/run_nineplus_confirmatory.py`, `experiments/plans/` | Ba loss có trọng số 1/1/0,1; năm lượt có sai lệch thủ tục khác nhau. |
-| Kết quả V3 | Mục 3.2.2, Bảng 3.6 | `scripts/evaluate_nineplus_v3.py`, `experiments/nineplus/evaluation_v3/V3_SIX_BACKBONE_EVALUATION_SUMMARY.json` | Sáu backbone đóng băng; probe fit Train, đo Validation. |
+| Kết quả V3 | Mục 3.2.2, Bảng 3.6 | `scripts/evaluate_nineplus_v3.py`, `experiments/nineplus/evaluation_v3/V3_SIX_BACKBONE_EVALUATION_SUMMARY.json` | Sáu checkpoint không cập nhật trong bước V3; đầu dò học trên Train, đo trên Validation. |
 | H2 và bỏ tham số | Mục 3.2.3, Bảng 3.7, 3.10 | `scripts/run_h2_sequence_noparam_sensitivity.py`, `experiments/nineplus/evaluation_v3/H2_SEQUENCE_NOPARAM_SENSITIVITY.json` | Ba độ lệch AP âm; kết quả không đổi trong phép kiểm tra bỏ tham số cụ thể. |
 | H1 và che tham số | Mục 3.2.3, Bảng 3.9 | `scripts/run_h1_masking_ablation.py`, `experiments/nineplus/evaluation_v3/h1_ablation/H1_FROZEN_MASKING_ABLATION_SUMMARY.json` | Vector đổi, AP không đổi; H1 chưa đo trực tiếp ở cấp token. |
-| Tái lập thủ công | Mục 3.2.2–3.2.3, Bảng 3.8 | `evidence/MANUAL_RUN_SUMMARY.txt`, `evidence/03_training_epochs_loss.png`, `experiments/nineplus/confirmatory/CONF_SEQUENCE_ONLY_seed42_1789413645/` | Sáu epoch, checkpoint tốt nhất epoch ba, hai AP thuộc hai giao thức probe. |
+| Tái lập thủ công | Mục 3.2.2–3.2.3, Bảng 3.8 | `evidence/MANUAL_RUN_SUMMARY.txt`, `evidence/03_training_epochs_loss.png`, `experiments/nineplus/confirmatory/CONF_SEQUENCE_ONLY_seed42_1789724929/RUN-MANIFEST.json` | Run thủ công là `1789724929`; V3 dùng checkpoint của run `1789413645`. Hai checkpoint cùng SHA-256, còn hai AP thuộc hai giao thức đầu dò khác nhau. |
 | Artifact nhị phân | Giới hạn Chương 3 | `experiments/nineplus/ARTIFACT-MANIFEST.json` | Bảy artifact lớn chỉ có cục bộ; clone Git sạch chưa đủ để chạy V3. |
 
 ## Thứ tự trình diễn an toàn
