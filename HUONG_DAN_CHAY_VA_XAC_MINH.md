@@ -2,6 +2,8 @@
 
 Hướng dẫn này dành cho buổi bảo vệ trên máy hiện tại. Mọi chỉ số AP/ROC-AUC đã lưu là trên **HDFS Validation**, không phải Test. Bản Word master ở thư mục gốc là nguồn diễn giải khoa học; các JSON/CSV là chứng cứ số liệu.
 
+Bản trình chiếu hiện hành là `bao-ve/Bao-cao-chuyen-de-10-slide-v4.pptx`; bản v3 chỉ giữ để đối chiếu. Xem [kịch bản trình diễn VS Code](bao-ve/KICH-BAN-DEMO-VSCODE.md) trước khi mở terminal trước hội đồng.
+
 ## 1. Mở repo và xem mã theo đường đi của dữ liệu
 
 ```powershell

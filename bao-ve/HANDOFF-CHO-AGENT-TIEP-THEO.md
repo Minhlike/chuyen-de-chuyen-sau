@@ -1,5 +1,7 @@
 # Handoff tại mốc kiểm chứng ngày 02-10-2026
 
+Cập nhật ngày 06-10-2026: bản slide hiện hành là `Bao-cao-chuyen-de-10-slide-v4.pptx`/`.pdf`; kịch bản trình diễn là `KICH-BAN-DEMO-VSCODE.md`. Các tham chiếu v3 bên dưới là trạng thái ở mốc handoff cũ.
+
 ## Lệnh của người dùng và điểm dừng
 
 Người dùng yêu cầu **dừng ở mốc gần nhất và viết handoff cho agent khác**. Mốc đã chốt là bộ bảo vệ 10 slide v3 cùng lần kiểm chứng trực tiếp V3 Sequence-Only seed 42. Không tiếp tục chỉnh slide, văn nói, mã nguồn hay chạy thêm thí nghiệm nếu chưa có yêu cầu tiếp theo của người dùng.

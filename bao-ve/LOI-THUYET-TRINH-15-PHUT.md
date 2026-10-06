@@ -1,6 +1,6 @@
 # Lời trình bày chuyên đề — 15 phút
 
-Đọc như đang giải thích công việc mình làm, không đọc nguyên bảng số. Mốc thời gian đã tính cả lúc chuyển slide và dừng ngắn để hội đồng nhìn sơ đồ. Các câu in đậm là chỗ cần nhấn giọng, không phải để đọc to hơn.
+Đọc như đang giải thích công việc mình làm, không đọc nguyên bảng số. Các mốc thời gian là phân bổ dự kiến có tính lúc chuyển slide và dừng ngắn; cần đọc thử, bấm giờ trước buổi bảo vệ. Các câu in đậm là chỗ cần nhấn giọng, không phải để đọc to hơn.
 
 ## Slide 1 — Câu hỏi nghiên cứu (0:00–0:40)
 
@@ -48,7 +48,7 @@ Quan trọng hơn, loss thấp chưa chứng minh biểu diễn có ích cho an 
 
 ## Slide 7 — Kết quả V3 và cách đọc AP bằng một (7:50–9:15)
 
-Giao thức V3 dùng sáu bộ trích xuất cố định: ba Sequence-Only và ba Multi-View theo các seed ghép cặp. Với mỗi bộ, đầu dò tuyến tính học trên toàn bộ 35 nghìn vector Train và được đo trên 7 nghìn 500 vector Validation. Trong bước này không có cập nhật trọng số backbone.
+Giao thức V3 dùng sáu bộ trích xuất cố định: ba Sequence-Only và ba Multi-View theo các seed ghép cặp. Với mỗi bộ, đầu dò tuyến tính học trên 35 nghìn vector Train rồi được đo trên 7 nghìn 500 vector Validation; backbone không cập nhật. Em đã chạy lại trích xuất và fit đầu dò từ cả sáu checkpoint trên GPU. Các số in ra khớp Word ở độ chính xác báo cáo. Đây là đánh giá lại checkpoint, chưa phải huấn luyện lại Stage A2.
 
 Sequence-Only đạt AP bằng một trên cả ba seed. Multi-View đạt khoảng 0,76; 0,63; và 0,59, trung bình 0,6608. AP cho biết thứ hạng của lớp dương trong bài toán này; ROC-AUC nhìn khả năng phân biệt hai lớp trên toàn dải ngưỡng. Kết quả AP bằng một là rất cao, nhưng em chỉ phát biểu đúng phạm vi: **đó là kết quả quan sát trên HDFS Validation theo giao thức V3**. Nó không phải chứng cứ rằng mô hình sẽ không mắc lỗi ở một tập dữ liệu khác.
 

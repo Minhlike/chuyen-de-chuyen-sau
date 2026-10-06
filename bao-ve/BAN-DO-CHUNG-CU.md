@@ -6,7 +6,7 @@ Mở `D:\chuyen-de-chuyen-sau` trong VS Code. Bản Word master là nguồn di�
 |---|---|---|---|
 | Đóng góp C1–C3 | Mục 2.1, Kết luận Chương 3 | `src/research_agent/experiments/` | Khung đặc tả, tích hợp kiến trúc, thực hiện và kiểm toán; không nhận là phát minh Transformer/VICReg. |
 | Hợp đồng Biểu diễn | Mục 1.1.3, Bảng 1.2 | `src/research_agent/experiments/extractor/` | PRESERVE/INVARIANT/EXCLUDE là yêu cầu, chưa phải bảo đảm đã chứng minh. |
-| Dữ liệu và phân chia | Mục 3.1.2, Bảng 3.2 | `datasets/manifests/SPL-HDFS-001.json`, `src/research_agent/experiments/data/hdfs_split_authority.py` | 35.000 Train, 7.500 Validation, Test niêm phong; toàn ngữ liệu có 575.061 phiên. |
+| Dữ liệu và phân chia | Mục 3.1.2, Bảng 3.2 | `datasets/manifests/SPL-HDFS-001.json`, `datasets/manifests/SUBSET-MANIFEST-HDFS.json`, `src/research_agent/experiments/data/hdfs_split_authority.py` | SPL ghi giao thức và toàn ngữ liệu; SUBSET ghi 35.000 Train, 7.500 Validation và trạng thái Test. |
 | Cấu trúc chuỗi | Mục 2.2–2.3 | `src/research_agent/experiments/extractor/sequence_view.py` | Transformer, biểu diễn tham số và trích xuất vector. |
 | Cấu trúc đồ thị | Mục 2.2–2.4 | `src/research_agent/experiments/models/temporal_graph_view_encoder.py`, `src/research_agent/experiments/extractor/graph_view.py` | Thông điệp, thời gian, trạng thái; chi phí toàn trình chưa đo. |
 | Multi-View/VICReg | Mục 2.4 | `src/research_agent/experiments/extractor/multi_view.py` | Thiết kế gióng hàng và dung hợp, không phải bằng chứng thắng Sequence. |
